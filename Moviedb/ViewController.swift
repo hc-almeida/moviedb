@@ -11,9 +11,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let service = MovieService()
+        service.fetchMovieList(
+            success: { movies in
+                print(movies)
+            },
+            failure: {
+                
+            })
     }
-
-
 }
 
