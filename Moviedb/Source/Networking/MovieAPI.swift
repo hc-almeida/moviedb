@@ -10,6 +10,7 @@ import Foundation
 struct MovieAPI {
     
     // MARK: - Definitions
+    
     enum ImageSize: String {
         case original
         case w780
@@ -19,6 +20,7 @@ struct MovieAPI {
     }
     
     // MARK: - Internal Properties
+    
     static let key: String = "4a2227bffae9ea53eebcaa7d05098303"
     static let version: Int = 3
     static let baseURL: String = "https://api.themoviedb.org/\(MovieAPI.version)"

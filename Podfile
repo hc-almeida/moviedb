@@ -7,6 +7,7 @@ target 'Moviedb' do
 
   # Pods for Moviedb
     pod 'Alamofire', '5.4.1'
+    pod 'SnapKit', '~> 5.0.0'
 
   target 'MoviedbTests' do
     inherit! :search_paths
