@@ -10,6 +10,8 @@ import Foundation
 protocol MovieListInteractorProtocol {
     
     func fecthMovieList()
+    
+    func fetchNextPage()
 }
 
 class MovieListInteractor: MovieListInteractorProtocol {
@@ -17,6 +19,8 @@ class MovieListInteractor: MovieListInteractorProtocol {
     // MARK: - VIP Properties
     
     var presenter: MovieListPresenterProtocol!
+    
+    private var movieList: [Movie] = []
     
     private let movieWorker: MovieWorkerProtocol
     
@@ -28,7 +32,7 @@ class MovieListInteractor: MovieListInteractorProtocol {
         movieWorker.fetchMovieList(section: .popular) { [unowned self] result in
             switch result {
             case .success(let response):
-                self.didFetchWithSuccess(response)
+                self.didFetchMovieWithSuccess(response)
             case .failure(let error):
                 self.didFetchFailure(error)
             }
@@ -37,11 +41,12 @@ class MovieListInteractor: MovieListInteractorProtocol {
     
     func fetchNextPage() {
         movieWorker.nextPage()
+        fecthMovieList()
     }
     
     // MARK: - Private Functions
-    
-    private func didFetchWithSuccess(_ response: MovieListResponse) {
+
+    private func didFetchMovieWithSuccess(_ response: MovieListResponse) {
         let movieList = response.results
         presenter.showMovieList(movieList)
     }
@@ -49,8 +54,4 @@ class MovieListInteractor: MovieListInteractorProtocol {
     private func didFetchFailure(_ error: MovieError) {
         
     }
-    
-    
-    
-
 }

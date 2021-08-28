@@ -20,8 +20,8 @@ class MovieListViewController: UIViewController {
     
     var router: MovieListRouterProtocol!
     
-    private let movieListView: MovieListView = {
-        return MovieListView(delegate: self)
+    private lazy var movieListView: MovieListView = {
+        return MovieListView(self)
     }()
     
     override func loadView() {
@@ -30,6 +30,11 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fecthMovieList()
+    }
+    
+    private func fecthMovieList() {
+        showLoading()
         interactor.fecthMovieList()
     }
     
@@ -38,13 +43,15 @@ class MovieListViewController: UIViewController {
 extension MovieListViewController: MovieListViewControllerProtocol {
     
     func showMovieList(_ movieList: [Movie]) {
-        movieListView.setup(movieList)
+        movieListView.set(movieList)
+        hideLoading()
     }
 }
 
 extension MovieListViewController: MovieListViewDelegate {
     
     func fetchMovieListNextPage() {
-        
+        showLoading()
+        interactor.fetchNextPage()
     }
 }
