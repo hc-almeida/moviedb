@@ -11,6 +11,7 @@ protocol MovieListPresenterProtocol {
     
     func showMovieList(_ movieList: [Movie])
     
+    func showMovieListError(_ error: MovieError)
 }
 
 class MovieListPresenter: MovieListPresenterProtocol  {
@@ -22,5 +23,9 @@ class MovieListPresenter: MovieListPresenterProtocol  {
     func showMovieList(_ movieList: [Movie]) {
         viewController.showMovieList(movieList)
     }
-
+    
+    func showMovieListError(_ error: MovieError) {
+        viewController.showMovieListError(
+            error.errorDescription ?? "Desculpe, algo deu errado. Tente mais tarde!")
+    }
 }

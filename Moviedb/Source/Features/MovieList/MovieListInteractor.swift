@@ -52,6 +52,6 @@ class MovieListInteractor: MovieListInteractorProtocol {
     }
     
     private func didFetchFailure(_ error: MovieError) {
-        
+        presenter.showMovieListError(error)
     }
 }
