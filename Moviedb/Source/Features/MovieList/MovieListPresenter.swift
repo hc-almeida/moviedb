@@ -9,6 +9,7 @@ import Foundation
 
 protocol MovieListPresenterProtocol {
     
+    func showMovieList(_ movieList: [Movie])
 }
 
 class MovieListPresenter: MovieListPresenterProtocol  {
@@ -16,5 +17,9 @@ class MovieListPresenter: MovieListPresenterProtocol  {
     // MARK: - VIP Properties
     
     weak var viewController: MovieListViewControllerProtocol!
+    
+    func showMovieList(_ movieList: [Movie]) {
+        viewController.showMovieList(movieList)
+    }
     
 }

@@ -10,64 +10,144 @@ import SnapKit
 
 class MovieListView: UIView {
     
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        return tableView
+    // MARK: - User Interface Components
+    
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let collectionView = UICollectionView(
+            frame: .zero, collectionViewLayout: layout)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .systemBackground
+        return collectionView
     }()
+    
+    // MARK: - Private Properties
     
     private var movieList: [Movie] = []
     
-    init() {
+    private unowned let delegate: MovieListViewDelegate
+    
+    // MARK: - Inits
+    
+    init(delegate: MovieListViewDelegate) {
+        self.delegate = delegate
         super.init(frame: .zero)
         setupUI()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupUI()
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public Functions
     
     func setup(_ movieList: [Movie]) {
         self.movieList = movieList
-        tableView.reloadData()
+        collectionView.reloadData()
     }
+    
 }
-extension MovieListView: ViewCodeProtocol {
+
+// MARK: - UICollectionViewDelegate Extension
+
+extension MovieListView: UICollectionViewDelegate {
     
-    func setupSubviews() {
-        addSubview(tableView)
-    }
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell,
+//                        forItemAt indexPath: IndexPath) {
+//
+//        let lastRowIndex = collectionView.numberOfItems(
+//            inSection: indexPath.section) - 1
+//
+//        if lastRowIndex == indexPath.row {
+//
+//        }
+//
+//        cell.alpha = 0.0
+//        cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+//
+//        UIView.animate(withDuration: 0.4, delay: 0.0, options: .allowUserInteraction, animations: {
+//            cell.alpha = 1.0
+//            cell.transform = .identity
+//        })
+//    }
     
-    func setupConstraints() {
-        tableView.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalTo(safeAreaLayoutGuide)
-        }
-    }
-    
-    func setupComponents() {
-        backgroundColor = .white
-        tableView.delegate = self
-        tableView.dataSource = self
-        MovieCell.registerOn(tableView)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }
 
-extension MovieListView: UITableViewDelegate, UITableViewDataSource {
+// MARK: - UICollectionViewDataSource Extension
+
+extension MovieListView: UICollectionViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movieList.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = MovieCell.identifier
         
-        guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: identifier, for: indexPath) as? MovieCell
-        else { return UITableViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: identifier, for: indexPath) as? MovieCell
+        else { return UICollectionViewCell() }
         
+//        cell.delegate = self
         cell.setup(movie: movieList[indexPath.item])
         
         return cell
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout Extension
+
+extension MovieListView: UICollectionViewDelegateFlowLayout {
+    
+    private var margin: CGFloat { 16.0 }
+    
+    private var insetForSections: UIEdgeInsets {
+        UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let padding = insetForSections.left + insetForSections.right + margin
+        let width = (bounds.size.width - padding) / 2
+        let ratio: CGFloat = 1.5
+        let height = width * ratio
+        
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20.0
+    }
+}
+
+// MARK: - ViewCodeProtocol Extension
+
+extension MovieListView: ViewCodeProtocol {
+    
+    func setupSubviews() {
+        addSubview(collectionView)
+    }
+    
+    func setupConstraints() {
+        collectionView.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().inset(16)
+            make.top.bottom.equalTo(safeAreaLayoutGuide)
+        }
+    }
+    
+    func setupComponents() {
+        backgroundColor = .systemBackground
+        MovieCell.registerOn(collectionView)
+        collectionView.accessibilityIdentifier = "movieCollection"
+    }
+}

@@ -15,9 +15,9 @@ struct MovieListResponse: Decodable {
     let results: [Movie]
     
     private enum CodingKeys: String, CodingKey {
-        case page = "page"
+        case page
         case totalPages = "total_pages"
         case totalResult = "total_results"
-        case results = "results"
+        case results
     }
 }
