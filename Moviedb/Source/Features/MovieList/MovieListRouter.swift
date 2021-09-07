@@ -9,12 +9,29 @@ import Foundation
 
 protocol MovieListRouterProtocol {
     
+    func proceedToMovieDetails()
+}
+
+protocol CharacterListDataPassingProtocol {
+    
+    var dataStore: MovieListDataStoreProtocol! { get }
 }
 
 class MovieListRouter: MovieListRouterProtocol {
     
     // MARK: - VIP Properties
     
-    weak var viewController: MovieListViewControllerProtocol!
+    weak var viewController: MovieListViewController!
     
+    // MARK: - Public Properties
+    
+    var dataStore: MovieListDataStoreProtocol!
+    
+    // MARK: - Public Functions
+    
+    func proceedToMovieDetails() {
+        guard let movie = dataStore.movie else { return }
+        
+//        let detailScene = 
+    }
 }

@@ -10,4 +10,6 @@ import Foundation
 protocol MovieListViewDelegate: AnyObject {
     
     func fetchMovieListNextPage()
+    
+    func selectMovie(at index: Int)
 }

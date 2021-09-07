@@ -55,9 +55,14 @@ extension MovieListViewController: MovieListViewControllerProtocol {
 }
 
 extension MovieListViewController: MovieListViewDelegate {
-    
+
     func fetchMovieListNextPage() {
         showLoading()
         interactor.fetchNextPage()
+    }
+    
+    func selectMovie(at index: Int) {
+        interactor.select(at: index)
+        router.proceedToMovieDetails()
     }
 }

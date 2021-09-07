@@ -77,6 +77,10 @@ class MovieListView: UIView {
     private func fetchMovieListNextPage() {
         delegate.fetchMovieListNextPage()
     }
+    
+    private func selectMovie(at index: Int) {
+        delegate.selectMovie(at: index)
+    }
 }
 
 // MARK: - UICollectionViewDelegate Extension
@@ -103,7 +107,8 @@ extension MovieListView: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        selectMovie(at: indexPath.row)
+        print("selecionou uma item \(indexPath.item)")
     }
 }
 
