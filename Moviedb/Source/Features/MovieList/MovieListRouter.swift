@@ -30,8 +30,11 @@ class MovieListRouter: MovieListRouterProtocol {
     // MARK: - Public Functions
     
     func proceedToMovieDetails() {
-        guard let movie = dataStore.movie else { return }
+//        guard let movie = dataStore.movie else { return }
         
-//        let detailScene = 
+        let detailScene = MovieDetailsBuilder.build()
+        
+        viewController.navigationController?
+            .pushViewController(detailScene, animated: true)
     }
 }

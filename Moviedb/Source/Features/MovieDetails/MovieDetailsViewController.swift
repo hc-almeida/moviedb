@@ -18,6 +18,18 @@ class MovieDetailsViewController: UIViewController {
     var interactor: MovieDetailsInteractorProtocol!
     
     var router: MovieDetailsRouterProtocol!
+    
+    // MARK: - Private Properties
+    
+    private lazy var movieDetailsView: MovieDetailsView = {
+        return MovieDetailsView()
+    }()
+    
+    // MARK: - View Lifecycle
+    
+    override func loadView() {
+        self.view = movieDetailsView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
