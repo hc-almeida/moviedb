@@ -1,5 +1,5 @@
 //
-//  MovieCustomCarousel.swift
+//  CastCustomCarousel.swift
 //  Moviedb
 //
 //  Created by Hellen on 13/09/21.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MovieCustomCarousel: UIView {
+class CastCustomCarousel: UIView {
     
     // MARK: - User Interface Components
     
@@ -39,35 +39,29 @@ class MovieCustomCarousel: UIView {
         setupUI()
     }
     
-    // MARK: - Public properties
-    
-    enum MovieCustomCarouselSection: Int, CaseIterable {
-        case cast = 0
-//        case recommented = 1
-    }
+    // MARK: - Public Properties
     
     func setup() {
- 
         collectionView.reloadData()
     }
     
-    func getCastMovieCell(indexPath: IndexPath) -> UICollectionViewCell {
+    // MARK: - Private Properties
+    
+    private func getCastMovieCell(indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = CastCell.identifier
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
                 as? CastCell else { return UICollectionViewCell() }
         
 //        cell.setup(movie: movie[indexPath.item])
-  
-        
+
         return cell
     }
-    
 }
 
 // MARK: - ViewCodeProtocol Extension
 
-extension MovieCustomCarousel: ViewCodeProtocol {
+extension CastCustomCarousel: ViewCodeProtocol {
     
     func setupSubviews() {
         addSubview(collectionView)
@@ -93,37 +87,21 @@ extension MovieCustomCarousel: ViewCodeProtocol {
 
 // MARK: - UICollectionView Protocol Extensions
 
-extension MovieCustomCarousel: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return MovieCustomCarouselSection.allCases.count
-    }
+extension CastCustomCarousel: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch MovieCustomCarouselSection(rawValue: section) {
-        case .cast:
-            return 5
-//        case .recommented:
-//            return 1
-        case .none:
-            return 1
-        }
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let section = MovieCustomCarouselSection(rawValue: indexPath.section) else { return UICollectionViewCell() }
-        
-        switch section {
-        case .cast:
-            return getCastMovieCell(indexPath: indexPath)
-//        case .recommented:
-//            return getCastMovieCell(indexPath: indexPath)
-        }
+        return getCastMovieCell(indexPath: indexPath)
     }
     
 }
 
-extension MovieCustomCarousel: UICollectionViewDelegateFlowLayout {
+// MARK: - UICollectionViewDelegateFlowLayout Extension
+
+extension CastCustomCarousel: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -105,8 +105,8 @@ class MovieDetailsView: UIView {
         return label
     }()
     
-    private lazy var castCarousel: MovieCustomCarousel = {
-        return MovieCustomCarousel(frame: .zero)
+    private lazy var castCarousel: CastCustomCarousel = {
+        return CastCustomCarousel(frame: .zero)
     }()
     
     private lazy var recommendationsTitle: UILabel = {
@@ -116,8 +116,8 @@ class MovieDetailsView: UIView {
         return label
     }()
     
-    private lazy var recommendationsCarousel: MovieCustomCarousel = {
-        return MovieCustomCarousel(frame: .zero)
+    private lazy var recommendationsCarousel: RecommendedCustomCarousel = {
+        return RecommendedCustomCarousel(frame: .zero)
     }()
     
     // MARK: - Inits
@@ -143,9 +143,9 @@ class MovieDetailsView: UIView {
 extension MovieDetailsView: ViewCodeProtocol {
     
     func setupSubviews() {
-        addSubview(backdropImage)
         addSubview(scrollView)
         scrollView.addSubview(scrollContent)
+        scrollContent.addSubview(backdropImage)
         scrollContent.addSubview(detailsContent)
         detailsContent.addSubview(moviePoster)
         detailsContent.addSubview(nameMovie)
@@ -162,14 +162,9 @@ extension MovieDetailsView: ViewCodeProtocol {
     }
     
     func setupConstraints() {
-        backdropImage.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
-            make.bottom.equalTo(detailsContent.snp.top).offset(20)
-        }
-        
         scrollView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.top.bottom.equalToSuperview()
+            make.left.right.equalTo(safeAreaLayoutGuide)
+            make.top.bottom.equalTo(safeAreaLayoutGuide)
         }
         
         scrollContent.snp.makeConstraints { make in
@@ -178,8 +173,13 @@ extension MovieDetailsView: ViewCodeProtocol {
             make.top.bottom.equalToSuperview()
         }
         
+        backdropImage.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalTo(detailsContent.snp.top).offset(20)
+        }
+        
         detailsContent.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(250)
+            make.top.equalToSuperview().offset(200)
             make.left.right.bottom.equalToSuperview()
         }
         
@@ -211,19 +211,17 @@ extension MovieDetailsView: ViewCodeProtocol {
         tmdbLabel.snp.makeConstraints { make in
             make.top.equalTo(genreMovie.snp.bottom).offset(8)
             make.left.equalTo(moviePoster.snp.right).offset(16)
-//            make.right.equalTo(noteMovie).inset(8)
         }
         
         noteMovie.snp.makeConstraints { make in
             make.top.equalTo(genreMovie.snp.bottom).offset(8)
             make.left.equalTo(tmdbLabel.snp.right).offset(8)
-            make.right.equalToSuperview().inset(32)
+//            make.left.equalTo(tmdbLabel.snp.firstBaseline)
         }
         
         synopsisMovie.snp.makeConstraints { make in
             make.top.equalTo(moviePoster.snp.bottom).offset(16)
             make.left.equalTo(detailsContent).offset(16)
-//            make.right.equalToSuperview().inset(16)
         }
         
         descriptionMovie.snp.makeConstraints { make in
@@ -244,13 +242,15 @@ extension MovieDetailsView: ViewCodeProtocol {
         }
         
         recommendationsTitle.snp.makeConstraints { make in
-            make.top.equalTo(castCarousel.snp.bottom).offset(16)
-            make.left.right.equalToSuperview()
+            make.top.equalTo(castCarousel.snp.bottom).offset(8)
+            make.left.equalTo(detailsContent).offset(16)
+            make.right.equalToSuperview().inset(16)
         }
         
         recommendationsCarousel.snp.makeConstraints { make in
-            make.top.equalTo(recommendationsTitle.snp.bottom).offset(16)
+            make.top.equalTo(recommendationsTitle.snp.bottom).offset(2)
             make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().inset(16)
         }
     }
     

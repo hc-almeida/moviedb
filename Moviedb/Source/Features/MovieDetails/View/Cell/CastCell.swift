@@ -13,15 +13,7 @@ class CastCell: UICollectionViewCell {
     
     private lazy var contentCard: UIView = {
         let view = UIView(frame: .zero)
-        view.layer.shadowOpacity = 0.5
-        return view
-    }()
-    
-    private lazy var movieCard: UIView = {
-        let view = UIView(frame: .zero)
-//        view.layer.cornerRadius = 10
-        view.clipsToBounds = true
-        view.backgroundColor = .darkGray
+//        view.layer.shadowOpacity = 0.5
         return view
     }()
     
@@ -32,9 +24,23 @@ class CastCell: UICollectionViewCell {
         return image
     }()
     
-    // MARK: - Public Properties
+    private lazy var nameActor: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "Hellen"
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 16)
+        return label
+    }()
     
-//    static var size = CGSize(width: 140.0, height: 210.0)
+    private lazy var characterActor: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "Caroline"
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 14)
+        return label
+    }()
+    
+    // MARK: - Public Properties
     
     static let identifier = String(describing: CastCell.self)
     
@@ -78,8 +84,9 @@ extension CastCell: ViewCodeProtocol {
     
     func setupSubviews() {
         addSubview(contentCard)
-        contentCard.addSubview(movieCard)
-        movieCard.addSubview(castImage)
+        contentCard.addSubview(castImage)
+        contentCard.addSubview(nameActor)
+        contentCard.addSubview(characterActor)
     }
     
     func setupConstraints() {
@@ -88,14 +95,24 @@ extension CastCell: ViewCodeProtocol {
             make.right.bottom.equalToSuperview()
         }
         
-        movieCard.snp.makeConstraints { make in
-            make.left.top.equalToSuperview()
-            make.right.bottom.equalToSuperview()
+        castImage.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalTo(130)
+            make.width.equalTo(90)
         }
         
-        castImage.snp.makeConstraints { make in
-            make.left.top.equalToSuperview()
-            make.right.bottom.equalToSuperview()
+        nameActor.snp.makeConstraints { make in
+            make.top.equalTo(castImage.snp.bottom).offset(4)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().inset(16)
+        }
+        
+        characterActor.snp.makeConstraints { make in
+            make.top.equalTo(nameActor.snp.bottom).offset(2)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().inset(16)
         }
     }
 }

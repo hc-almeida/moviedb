@@ -61,7 +61,7 @@ class MovieListInteractor: MovieListInteractorProtocol {
     
     func select(at index: Int) {
         movie = movieList[index]
-        print("TESTE AQUI ==== \(movie)")
+        print("$$$%%%&&&****** TESTE AQUI ==== \(movie)")
     }
     
     // MARK: - Private Functions

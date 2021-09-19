@@ -9,7 +9,7 @@ import UIKit
 
 struct MovieDetailsBuilder {
     
-    static func build() -> UIViewController {
+    static func build(_ movie: Movie) -> UIViewController {
         let viewController = MovieDetailsViewController()
         let interactor = MovieDetailsInteractor()
         let presenter = MovieDetailsPresenter()
@@ -18,6 +18,7 @@ struct MovieDetailsBuilder {
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
+        interactor.movie = movie
         presenter.viewController = viewController
         router.viewController = viewController
         

@@ -1,23 +1,23 @@
 //
-//  Cast.swift
+//  Crew.swift
 //  Moviedb
 //
-//  Created by Hellen Caroline on 02/02/21.
+//  Created by Hellen on 18/09/21.
 //
 
 import Foundation
 
-struct Cast: Decodable {
-
+struct Crew: Decodable {
+    
     let name: String
     
-    let character: String
+    let job: String
     
     let profilePath: String?
     
     private enum CodingKeys: String, CodingKey {
         case name = "name"
-        case character = "character"
+        case job = "job"
         case profilePath = "profile_path"
     }
 }

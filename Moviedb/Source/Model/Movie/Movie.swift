@@ -10,11 +10,17 @@ import Foundation
 struct Movie: Decodable {
 
     let id: Int
+    
     let title: String
+    
     let voteAverage: Double
+    
     let releaseDate: String
+    
     let overview: String
+    
     let posterPath: String?
+    
     let backdropPath: String?
     
     private enum CodingKeys: String, CodingKey {

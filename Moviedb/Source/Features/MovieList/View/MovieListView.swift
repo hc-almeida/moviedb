@@ -107,7 +107,7 @@ extension MovieListView: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectMovie(at: indexPath.row)
+        selectMovie(at: indexPath.item)
         print("selecionou uma item \(indexPath.item)")
     }
 }

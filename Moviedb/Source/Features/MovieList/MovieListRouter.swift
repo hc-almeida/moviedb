@@ -17,7 +17,7 @@ protocol CharacterListDataPassingProtocol {
     var dataStore: MovieListDataStoreProtocol! { get }
 }
 
-class MovieListRouter: MovieListRouterProtocol {
+class MovieListRouter: MovieListRouterProtocol, CharacterListDataPassingProtocol {
     
     // MARK: - VIP Properties
     
@@ -30,9 +30,9 @@ class MovieListRouter: MovieListRouterProtocol {
     // MARK: - Public Functions
     
     func proceedToMovieDetails() {
-//        guard let movie = dataStore.movie else { return }
+        guard let movie = dataStore.movie else { return }
         
-        let detailScene = MovieDetailsBuilder.build()
+        let detailScene = MovieDetailsBuilder.build(movie)
         
         viewController.navigationController?
             .pushViewController(detailScene, animated: true)
