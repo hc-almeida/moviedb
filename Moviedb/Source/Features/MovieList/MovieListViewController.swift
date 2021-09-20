@@ -9,7 +9,7 @@ import UIKit
 
 protocol MovieListViewControllerProtocol: AnyObject {
     
-    func showMovieList(_ movieList: [Movie])
+    func showMovieList(_ viewModel: MovieListViewModel)
     
     func showMovieListError(_ errorMessage: String)
 }
@@ -43,12 +43,12 @@ class MovieListViewController: UIViewController {
 }
 
 extension MovieListViewController: MovieListViewControllerProtocol {
-
-    func showMovieList(_ movieList: [Movie]) {
-        movieListView.set(movieList)
+    
+    func showMovieList(_ viewModel: MovieListViewModel) {
+        movieListView.set(viewModel.movies)
         hideLoading()
     }
-    
+
     func showMovieListError(_ errorMessage: String) {
         showMessage(title: "", message: errorMessage)
     }

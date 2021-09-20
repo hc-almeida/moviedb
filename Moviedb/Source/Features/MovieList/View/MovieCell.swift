@@ -66,12 +66,9 @@ class MovieCell: UICollectionViewCell {
         clearForReuse()
     }
     
-    func setup(movie: Movie) {
-        movieName.text = movie.title
-        
-        if let poster = movie.posterPath {
-            movieImage.load(url: MovieAPI.build(image: poster, size: .w500))
-        }
+    func setup(_ viewModel: MovieViewModel) {
+        movieName.text = viewModel.name
+        movieImage.load(url: MovieAPI.build(image: viewModel.imagePoster, size: .w500))
     }
     
     // MARK: - Private Functions

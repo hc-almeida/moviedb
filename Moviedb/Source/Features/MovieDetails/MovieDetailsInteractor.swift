@@ -17,7 +17,7 @@ protocol MovieDetailsInteractorProtocol {
     func fetchMovieDetails()
 }
 
-class MovieDetailsInteractor: MovieDetailsInteractorProtocol {
+class MovieDetailsInteractor: MovieDetailsInteractorProtocol, MovieDetailsDataStoreProtocol {
     
     // MARK: - VIP Properties
     
@@ -47,7 +47,7 @@ class MovieDetailsInteractor: MovieDetailsInteractorProtocol {
         movieDetailsWorker.fetchMovieDetails(of: movie.id) { [unowned self] result in
             switch result {
             case .success(let response):
-                presenter.showMovieDetails(response)
+                presenter.showMovieDetails(movie, response: response)
             case .failure(let error):
                 presenter.showMovieDetailsError(error)
             }

@@ -14,12 +14,15 @@ class RecommendedCell: UICollectionViewCell {
     private lazy var contentCard: UIView = {
         let view = UIView(frame: .zero)
         view.layer.shadowOpacity = 0.5
+        view.layer.cornerRadius = 16
+        view.clipsToBounds = true
         return view
     }()
     
     private lazy var recommendedImage: UIImageView = {
         let image = UIImageView(frame: .zero)
         image.backgroundColor = .black
+        image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -50,7 +53,7 @@ class RecommendedCell: UICollectionViewCell {
 
     func setup(movie: Movie) {
         if let poster = movie.posterPath {
-            recommendedImage.load(url: poster)
+            recommendedImage.load(url: MovieAPI.build(image: poster, size: .w780))
         }
     }
     

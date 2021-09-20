@@ -21,11 +21,29 @@ class MovieListPresenter: MovieListPresenterProtocol  {
     weak var viewController: MovieListViewControllerProtocol!
     
     func showMovieList(_ movieList: [Movie]) {
-        viewController.showMovieList(movieList)
+        let viewModel = buildViewModel(movieList)
+        viewController.showMovieList(viewModel)
     }
     
     func showMovieListError(_ error: MovieError) {
         viewController.showMovieListError(
             error.errorDescription ?? "Desculpe, algo deu errado. Tente mais tarde!")
+    }
+    
+    // MARK: - Private Functions
+    
+    private func buildViewModel(_ results: [Movie]) -> MovieListViewModel {
+         
+        let movie = results.map { movie in
+            MovieViewModel(
+                name: movie.title,
+                imagePoster: movie.posterPath ?? "",
+                imageBackdropPath: movie.backdropPath ?? "",
+                overview: movie.overview,
+                releaseDate: movie.releaseDate,
+                note: String(movie.voteAverage))
+        }
+        
+        return MovieListViewModel(movies: movie)
     }
 }

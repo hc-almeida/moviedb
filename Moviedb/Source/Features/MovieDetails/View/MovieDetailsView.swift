@@ -39,31 +39,29 @@ class MovieDetailsView: UIView {
     private lazy var moviePoster: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .green
         imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     private lazy var nameMovie: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingTail
         label.textColor = .black
-        label.text = "Vingadores"
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = .boldSystemFont(ofSize: 18)
         return label
     }()
     
     private lazy var durantionMovie: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
-        label.text = "2h10min"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
     
     private lazy var genreMovie: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Ação - Aventura"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
@@ -78,7 +76,6 @@ class MovieDetailsView: UIView {
     
     private lazy var noteMovie: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "9.2 / 10"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
@@ -93,7 +90,6 @@ class MovieDetailsView: UIView {
     private lazy var descriptionMovie: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
-        label.text = "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese."
         label.font = .systemFont(ofSize: 16)
         return label
     }()
@@ -108,14 +104,14 @@ class MovieDetailsView: UIView {
     private lazy var castCarousel: CastCustomCarousel = {
         return CastCustomCarousel(frame: .zero)
     }()
-    
+
     private lazy var recommendationsTitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Recomendações"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
-    
+
     private lazy var recommendationsCarousel: RecommendedCustomCarousel = {
         return RecommendedCustomCarousel(frame: .zero)
     }()
@@ -133,8 +129,24 @@ class MovieDetailsView: UIView {
     
     // MARK: - Public Functions
     
-    func setup() {
-        castCarousel.setup()
+    func setup(_ movie: Movie, details: Details) {
+        if let posterPath = movie.posterPath {
+            moviePoster.load(url: MovieAPI.build(image: posterPath, size: .w500))
+        }
+        
+        if let backdropPath = movie.backdropPath {
+            backdropImage.load(url: MovieAPI.build(image: backdropPath, size: .w780))
+        }
+        
+        let note = String(movie.voteAverage)
+        
+        nameMovie.text = movie.title
+        durantionMovie.text = details.duration
+        genreMovie.text = details.genres
+        noteMovie.text = "\(note) /10"
+        descriptionMovie.text = movie.overview
+//        castCarousel.setup(details)
+        recommendationsCarousel.setup(details)
     }
 }
 
@@ -184,14 +196,14 @@ extension MovieDetailsView: ViewCodeProtocol {
         }
         
         moviePoster.snp.makeConstraints { make in
-            make.height.equalTo(200)
+            make.height.equalTo(230)
             make.width.equalTo(160)
             make.left.equalTo(detailsContent).offset(16)
             make.top.equalTo(detailsContent.snp.top).offset(-30)
         }
         
         nameMovie.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(32)
+            make.top.equalToSuperview().offset(45)
             make.left.equalTo(moviePoster.snp.right).offset(16)
             make.right.equalToSuperview().inset(16)
         }
@@ -216,7 +228,6 @@ extension MovieDetailsView: ViewCodeProtocol {
         noteMovie.snp.makeConstraints { make in
             make.top.equalTo(genreMovie.snp.bottom).offset(8)
             make.left.equalTo(tmdbLabel.snp.right).offset(8)
-//            make.left.equalTo(tmdbLabel.snp.firstBaseline)
         }
         
         synopsisMovie.snp.makeConstraints { make in
@@ -225,7 +236,7 @@ extension MovieDetailsView: ViewCodeProtocol {
         }
         
         descriptionMovie.snp.makeConstraints { make in
-            make.top.equalTo(synopsisMovie.snp.bottom).offset(16)
+            make.top.equalTo(synopsisMovie.snp.bottom).offset(8)
             make.left.equalTo(detailsContent).offset(16)
             make.right.equalToSuperview().inset(16)
         }
@@ -240,13 +251,13 @@ extension MovieDetailsView: ViewCodeProtocol {
             make.top.equalTo(castTitle.snp.bottom).offset(2)
             make.left.right.equalToSuperview()
         }
-        
+
         recommendationsTitle.snp.makeConstraints { make in
             make.top.equalTo(castCarousel.snp.bottom).offset(8)
             make.left.equalTo(detailsContent).offset(16)
             make.right.equalToSuperview().inset(16)
         }
-        
+
         recommendationsCarousel.snp.makeConstraints { make in
             make.top.equalTo(recommendationsTitle.snp.bottom).offset(2)
             make.left.right.equalToSuperview()

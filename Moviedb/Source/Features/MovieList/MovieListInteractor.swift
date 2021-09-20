@@ -61,7 +61,6 @@ class MovieListInteractor: MovieListInteractorProtocol {
     
     func select(at index: Int) {
         movie = movieList[index]
-        print("$$$%%%&&&****** TESTE AQUI ==== \(movie)")
     }
     
     // MARK: - Private Functions
@@ -80,10 +79,3 @@ class MovieListInteractor: MovieListInteractorProtocol {
         presenter.showMovieListError(error)
     }
 }
-
-
-// To do:
-
-// Implementar lógica para nextPage
-
-// Entender o porque ao passar dados para proximas tela está quebrando

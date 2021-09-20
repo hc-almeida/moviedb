@@ -26,8 +26,8 @@ class MovieListView: UIView {
     }()
     
     // MARK: - Private Properties
-    
-    private var movieList: [Movie] = []
+
+    private var movieList: [MovieViewModel] = []
     
     private unowned let delegate: MovieListViewDelegate
     
@@ -45,12 +45,12 @@ class MovieListView: UIView {
     
     // MARK: - Public Functions
     
-    func setup(_ movieList: [Movie]) {
-        self.movieList = movieList
+    func setup(_ movie: [MovieViewModel]) {
+        movieList = movie
         collectionView.reloadData()
     }
     
-    func set(_ movies: [Movie]) {
+    func set(_ movies: [MovieViewModel]) {
         var indexPaths: [IndexPath] = []
         
         for index in movies.indices {
@@ -64,7 +64,7 @@ class MovieListView: UIView {
         })
     }
     
-    func reloadMovies(_ movies: [Movie], animated: Bool) {
+    func reloadMovies(_ movies: [MovieViewModel], animated: Bool) {
         movieList = movies
         
         if animated {
@@ -128,7 +128,7 @@ extension MovieListView: UICollectionViewDataSource {
         else { return UICollectionViewCell() }
         
 //        cell.delegate = self
-        cell.setup(movie: movieList[indexPath.item])
+        cell.setup(movieList[indexPath.item])
         
         return cell
     }

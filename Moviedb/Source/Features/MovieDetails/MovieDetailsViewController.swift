@@ -9,7 +9,7 @@ import UIKit
 
 protocol MovieDetailsViewControllerProtocol: AnyObject {
     
-    func showMovieDetails(_ detail: Details)
+    func showMovieDetails(_ movie: Movie, detail: Details)
     
     func showMovieListError(_ errorMessage: String)
 }
@@ -21,10 +21,6 @@ class MovieDetailsViewController: UIViewController {
     var interactor: MovieDetailsInteractorProtocol!
     
     var router: MovieDetailsRouterProtocol!
-    
-    // MARK: - Public properties
-    
-    var details: Details?
     
     // MARK: - Private Properties
     
@@ -52,10 +48,10 @@ class MovieDetailsViewController: UIViewController {
 
 extension MovieDetailsViewController: MovieDetailsViewControllerProtocol {
     
-    func showMovieDetails(_ detail: Details) {
-        
+    func showMovieDetails(_ movie: Movie, detail: Details) {
+        movieDetailsView.setup(movie, details: detail)
     }
-    
+
     func showMovieListError(_ errorMessage: String) {
         
     }

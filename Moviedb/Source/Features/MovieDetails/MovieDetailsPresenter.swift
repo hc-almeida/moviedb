@@ -9,7 +9,7 @@ import Foundation
 
 protocol MovieDetailsPresenterProotocol {
     
-    func showMovieDetails(_ response: MovieDetailsResponse?)
+    func showMovieDetails(_ movie: Movie, response: MovieDetailsResponse?)
     
     func showMovieDetailsError(_ error: MovieError?)
 }
@@ -22,14 +22,14 @@ class MovieDetailsPresenter: MovieDetailsPresenterProotocol {
     
     // MARK: - Public functions
     
-    func showMovieDetails(_ response: MovieDetailsResponse?) {
+    func showMovieDetails(_ movie: Movie, response: MovieDetailsResponse?) {
         guard let movieDetails = response else {
             showMovieDetailsError()
             return
         }
         
         let details = Details(movieDetails)
-        viewController.showMovieDetails(details)
+        viewController.showMovieDetails(movie, detail: details)
     }
     
     func showMovieDetailsError(_ error: MovieError? = nil) {

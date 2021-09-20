@@ -25,7 +25,7 @@ class RecommendedCustomCarousel: UIView {
     
     // MARK: - Private Properties
     
-    private var movie: [Movie] = []
+    private var recommendationList: [Movie] = []
     
     // MARK: - Inits
     
@@ -41,7 +41,10 @@ class RecommendedCustomCarousel: UIView {
     
     // MARK: - Public Properties
     
-    func setup() {
+    func setup(_ details: Details?) {
+        guard let details = details else { return }
+        
+        recommendationList = details.recommendations
         collectionView.reloadData()
     }
     
@@ -53,7 +56,7 @@ class RecommendedCustomCarousel: UIView {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
                 as? RecommendedCell else { return UICollectionViewCell() }
         
-//        cell.setup(movie: movie[indexPath.item])
+        cell.setup(movie: recommendationList[indexPath.item])
 
         return cell
     }
@@ -90,7 +93,7 @@ extension RecommendedCustomCarousel: ViewCodeProtocol {
 extension RecommendedCustomCarousel: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return recommendationList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
