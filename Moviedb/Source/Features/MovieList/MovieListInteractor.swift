@@ -51,6 +51,12 @@ class MovieListInteractor: MovieListInteractorProtocol {
         self.movieListWorker = MovieListWorker()
     }
     
+    init(movieListWorker: MovieListWorkerProtocol) {
+        self.movieListWorker = movieListWorker
+    }
+    
+    // MARK: - Public Functions
+    
     func fecthMovieList() {
         movieListWorker.fetchMovieList(section: .popular) { [unowned self] result in
             switch result {
