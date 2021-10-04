@@ -378,7 +378,6 @@
 				D4ECB64A25C9C3800057C768 /* Resources */,
 				D4ECB63D25C9C2FE0057C768 /* Source */,
 				D4ECB64925C9C35C0057C768 /* SupportFiles */,
-				D4D44E9625C0B198000F6268 /* Info.plist */,
 			);
 			path = Moviedb;
 			sourceTree = "<group>";
@@ -429,6 +428,7 @@
 		D4ECB64925C9C35C0057C768 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				D4D44E9625C0B198000F6268 /* Info.plist */,
 				D4D44E8825C0B197000F6268 /* AppDelegate.swift */,
 				D4D44E8A25C0B197000F6268 /* SceneDelegate.swift */,
 				D4D44E9325C0B198000F6268 /* LaunchScreen.storyboard */,
@@ -906,7 +906,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Moviedb/Info.plist;
+				INFOPLIST_FILE = Moviedb/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -925,7 +925,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Moviedb/Info.plist;
+				INFOPLIST_FILE = Moviedb/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
