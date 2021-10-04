@@ -26,14 +26,20 @@ class MovieCell: UICollectionViewCell {
         return view
     }()
     
+    private lazy var blurCard: UIView = {
+        let view = UIView(frame: .zero)
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
     private lazy var movieName: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
         label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 16)
         label.textAlignment = .center
         label.minimumScaleFactor = 0.5
         label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 16)
         return label
     }()
     
@@ -87,8 +93,9 @@ extension MovieCell: ViewCodeProtocol {
     func setupSubviews() {
         addSubview(contentCard)
         contentCard.addSubview(movieCard)
-        movieCard.addSubview(movieName)
         movieCard.addSubview(movieImage)
+        movieCard.addSubview(blurCard)
+        movieCard.addSubview(movieName)
     }
     
     func setupConstraints() {
@@ -98,25 +105,28 @@ extension MovieCell: ViewCodeProtocol {
         }
         
         movieCard.snp.makeConstraints { make in
-            make.left.top.equalToSuperview()
+            make.left.top.right.bottom.equalToSuperview()
             make.right.bottom.equalToSuperview()
         }
         
         movieImage.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        
+        blurCard.snp.makeConstraints { make in
+            make.bottom.left.right.equalToSuperview()
+            make.height.equalTo(45)
         }
         
         movieName.snp.makeConstraints { make in
             make.height.equalTo(24)
             make.left.equalToSuperview().offset(8)
-            make.right.equalToSuperview().inset(8)
-            make.bottom.equalToSuperview().inset(16)
-            make.top.equalTo(movieImage.snp.bottom).offset(16)
+            make.right.bottom.equalToSuperview().inset(8)
         }
     }
     
     func setupComponents() {
         layer.cornerRadius = 10
-        backgroundColor = .green
+        blurCard.addBlurToView()
     }
 }

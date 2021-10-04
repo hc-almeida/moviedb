@@ -76,7 +76,7 @@ class MovieDetailsView: UIView {
         let label = UILabel(frame: .zero)
         label.text = "TMDB"
         label.textColor = .systemGreen
-        label.font = .boldSystemFont(ofSize: 15)
+        label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
     
@@ -99,7 +99,7 @@ class MovieDetailsView: UIView {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 18)
         return label
     }()
     
@@ -159,7 +159,7 @@ class MovieDetailsView: UIView {
         nameMovie.text = movie.title
         durantionMovie.text = details.duration
         genreMovie.text = details.genres
-        noteMovie.text = "\(note) /10"
+        noteMovie.attributedText = NSMutableAttributedString().bold(note).normal(" / 10")
         descriptionMovie.text = movie.overview
         castCarousel.setup(details)
         recommendationsCarousel.setup(details)

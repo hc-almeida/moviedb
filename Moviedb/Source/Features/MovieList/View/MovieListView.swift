@@ -121,7 +121,6 @@ extension MovieListView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectMovie(at: indexPath.item)
-        print("selecionou uma item \(indexPath.item)")
     }
 }
 
@@ -140,7 +139,6 @@ extension MovieListView: UICollectionViewDataSource {
                 withReuseIdentifier: identifier, for: indexPath) as? MovieCell
         else { return UICollectionViewCell() }
         
-//        cell.delegate = self
         cell.setup(movieList[indexPath.item])
         
         return cell
@@ -198,7 +196,6 @@ extension MovieListView: ViewCodeProtocol {
     
     func setupComponents() {
         emptyListView.isHidden = true
-//        backgroundColor = .systemBackground
         backgroundColor = .black
         MovieCell.registerOn(collectionView)
         collectionView.accessibilityIdentifier = "movieCollection"

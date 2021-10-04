@@ -81,6 +81,8 @@ class MovieListViewController: UIViewController {
     }
 }
 
+// MARK: - MovieListViewControllerProtocol Extension
+
 extension MovieListViewController: MovieListViewControllerProtocol {
     
     func reloadMovies(_ viewModel: MovieListViewModel, animated: Bool) {
