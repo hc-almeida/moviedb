@@ -19,13 +19,13 @@ class CastCustomCarousel: UIView {
         let collectionView = UICollectionView(
             frame: .zero, collectionViewLayout: layout)
 
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .black
         return collectionView
     }()
     
     // MARK: - Private Properties
     
-    private var movie: [Movie] = []
+    private var cast: [Cast] = []
     
     // MARK: - Inits
     
@@ -41,7 +41,10 @@ class CastCustomCarousel: UIView {
     
     // MARK: - Public Properties
     
-    func setup() {
+    func setup(_ details: Details?) {
+        guard let details = details else { return }
+        
+        cast = details.cast
         collectionView.reloadData()
     }
     
@@ -53,7 +56,7 @@ class CastCustomCarousel: UIView {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
                 as? CastCell else { return UICollectionViewCell() }
         
-//        cell.setup(movie: movie[indexPath.item])
+        cell.setup(cast: cast[indexPath.item])
 
         return cell
     }
@@ -78,7 +81,7 @@ extension CastCustomCarousel: ViewCodeProtocol {
     }
     
     func setupComponents() {
-        backgroundColor = .systemBackground
+        backgroundColor = .black
         collectionView.delegate = self
         collectionView.dataSource = self
         CastCell.registerOn(collectionView)
@@ -90,7 +93,7 @@ extension CastCustomCarousel: ViewCodeProtocol {
 extension CastCustomCarousel: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return cast.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

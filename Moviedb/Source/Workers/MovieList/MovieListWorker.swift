@@ -1,5 +1,5 @@
 //
-//  MovieWorker.swift
+//  MovieListWorker.swift
 //  Moviedb
 //
 //  Created by Hellen on 12/06/21.
@@ -9,17 +9,20 @@ import Foundation
 
 typealias MovieListResult = (Result<MovieListResponse, MovieError>) -> Void
 
-protocol MovieWorkerProtocol {
+protocol MovieListWorkerProtocol {
     
     var currentPage: Int { get }
-    
+
     func nextPage()
-    
+
     func fetchMovieList(section: Section,
+                        completion: @escaping MovieListResult)
+    
+    func fetchMovieList(searchText: String,
                         completion: @escaping MovieListResult)
 }
 
-class MovieWorker: MovieWorkerProtocol {
+class MovieListWorker: MovieListWorkerProtocol {
     
     var currentPage = 1
     
@@ -30,6 +33,14 @@ class MovieWorker: MovieWorkerProtocol {
     func fetchMovieList(section: Section, completion: @escaping MovieListResult) {
         let url = MovieAPI.build(section: section, page: currentPage)
         
+        NetworkManager.request(url: url) { result in
+            completion(result)
+        }
+    }
+    
+    func fetchMovieList(searchText: String, completion: @escaping MovieListResult) {
+        let url = MovieAPI.build(textSearch: searchText, page: currentPage)
+
         NetworkManager.request(url: url) { result in
             completion(result)
         }

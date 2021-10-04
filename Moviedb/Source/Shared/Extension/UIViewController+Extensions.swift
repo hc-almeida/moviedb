@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 extension UIViewController {
     
@@ -14,35 +15,40 @@ extension UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
-    
+
     func showLoading() {
+        let background = UIView()
         let container = UIView()
-        let loadingView = UIView()
-        let activityIndicator = UIActivityIndicatorView()
+        let loading = UIActivityIndicatorView()
         
-        container.tag = 1000
-        container.frame = self.view.frame
-        container.center = self.view.center
-        container.backgroundColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.8)
+        background.tag = 1000
+        background.backgroundColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.8)
         
-        loadingView.frame = CGRect(x: 0, y: 0, width: 140, height: 140)
-        loadingView.center = self.view.center
-        loadingView.backgroundColor = UIColor(red: 0.27, green: 0.27, blue: 0.27, alpha: 0.8)
-        loadingView.clipsToBounds = true
-        loadingView.layer.cornerRadius = 10
+        container.backgroundColor = UIColor(red: 0.27, green: 0.27, blue: 0.27, alpha: 0.8)
+        container.clipsToBounds = true
+        container.layer.cornerRadius = 10
         
-        activityIndicator.color = .white
-        activityIndicator.style = UIActivityIndicatorView.Style.large
+        loading.color = .white
+        loading.style = .large
         
-        activityIndicator.center = CGPoint(
-            x: loadingView.frame.size.width / 2,
-            y: loadingView.frame.size.height / 2
-        )
+        view.addSubview(background)
+        background.addSubview(container)
+        container.addSubview(loading)
         
-        loadingView.addSubview(activityIndicator)
-        container.addSubview(loadingView)
-        self.view.addSubview(container)
-        activityIndicator.startAnimating()
+        background.snp.makeConstraints { make in
+            make.width.height.equalTo(view)
+        }
+        
+        container.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(140)
+        }
+        
+        loading.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        loading.startAnimating()
     }
     
     func hideLoading() {

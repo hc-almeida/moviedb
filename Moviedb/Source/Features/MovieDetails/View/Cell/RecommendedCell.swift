@@ -21,7 +21,6 @@ class RecommendedCell: UICollectionViewCell {
     
     private lazy var recommendedImage: UIImageView = {
         let image = UIImageView(frame: .zero)
-        image.backgroundColor = .black
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         return image

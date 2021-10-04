@@ -15,7 +15,7 @@ protocol MovieDetailsViewControllerProtocol: AnyObject {
 }
 
 class MovieDetailsViewController: UIViewController {
-    
+ 
     // MARK: - VIP Properties
     
     var interactor: MovieDetailsInteractorProtocol!
@@ -25,7 +25,7 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Private Properties
     
     private lazy var movieDetailsView: MovieDetailsView = {
-        return MovieDetailsView()
+        return MovieDetailsView(self)
     }()
     
     // MARK: - View Lifecycle
@@ -39,12 +39,23 @@ class MovieDetailsViewController: UIViewController {
         fetchMovieDetails()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setupNavigation()
+    }
+    
     // MARK: - Private functions
     
     private func fetchMovieDetails() {
         interactor.fetchMovieDetails()
     }
+    
+    private func setupNavigation() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }
+
+// MARK: - MovieDetailsViewControllerProtocol Extension
 
 extension MovieDetailsViewController: MovieDetailsViewControllerProtocol {
     
@@ -53,6 +64,15 @@ extension MovieDetailsViewController: MovieDetailsViewControllerProtocol {
     }
 
     func showMovieListError(_ errorMessage: String) {
-        
+        showMessage(title: "", message: errorMessage)
+    }
+}
+
+// MARK: - MovieDetailsViewDelegate Extension
+
+extension MovieDetailsViewController: MovieDetailsViewDelegate {
+    
+    func close() {
+        navigationController?.popViewController(animated: true)
     }
 }

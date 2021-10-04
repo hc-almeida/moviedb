@@ -12,13 +12,6 @@ class MovieDetailsView: UIView {
     
     // MARK: - User Interface Components
     
-    private lazy var backdropImage: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .blue
-        return imageView
-    }()
-    
     private lazy var scrollView: UIScrollView = {
         return UIScrollView(frame: .zero)
     }()
@@ -27,6 +20,17 @@ class MovieDetailsView: UIView {
         let contentView = UIView(frame: .zero)
         contentView.backgroundColor = .clear
         return contentView
+    }()
+    
+    private lazy var backdropImage: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private lazy var backButton: UIBackButton = {
+        let button = UIBackButton(frame: .zero)
+        return button
     }()
     
     private lazy var detailsContent: UIView = {
@@ -47,8 +51,8 @@ class MovieDetailsView: UIView {
     private lazy var nameMovie: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .white
         label.lineBreakMode = .byTruncatingTail
-        label.textColor = .black
         label.font = .boldSystemFont(ofSize: 18)
         return label
     }()
@@ -56,12 +60,14 @@ class MovieDetailsView: UIView {
     private lazy var durantionMovie: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
+        label.textColor = .white
         label.font = .systemFont(ofSize: 16)
         return label
     }()
     
     private lazy var genreMovie: UILabel = {
         let label = UILabel(frame: .zero)
+        label.textColor = .white
         label.font = .systemFont(ofSize: 16)
         return label
     }()
@@ -69,13 +75,14 @@ class MovieDetailsView: UIView {
     private lazy var tmdbLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "TMDB"
-        label.textColor = .red
-        label.font = .boldSystemFont(ofSize: 14)
+        label.textColor = .systemGreen
+        label.font = .boldSystemFont(ofSize: 15)
         return label
     }()
     
     private lazy var noteMovie: UILabel = {
         let label = UILabel(frame: .zero)
+        label.textColor = .white
         label.font = .systemFont(ofSize: 16)
         return label
     }()
@@ -83,6 +90,7 @@ class MovieDetailsView: UIView {
     private lazy var synopsisMovie: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Sinopse"
+        label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -90,6 +98,7 @@ class MovieDetailsView: UIView {
     private lazy var descriptionMovie: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
+        label.textColor = .white
         label.font = .systemFont(ofSize: 16)
         return label
     }()
@@ -97,6 +106,7 @@ class MovieDetailsView: UIView {
     private lazy var castTitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Elenco"
+        label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -108,6 +118,7 @@ class MovieDetailsView: UIView {
     private lazy var recommendationsTitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Recomendações"
+        label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -116,9 +127,14 @@ class MovieDetailsView: UIView {
         return RecommendedCustomCarousel(frame: .zero)
     }()
     
+    // MARK: - Private Properties
+    
+    private unowned let delegate: MovieDetailsViewDelegate
+    
     // MARK: - Inits
     
-    init() {
+    init(_ delegate: MovieDetailsViewDelegate) {
+        self.delegate = delegate
         super.init(frame: .zero)
         setupUI()
     }
@@ -145,8 +161,15 @@ class MovieDetailsView: UIView {
         genreMovie.text = details.genres
         noteMovie.text = "\(note) /10"
         descriptionMovie.text = movie.overview
-//        castCarousel.setup(details)
+        castCarousel.setup(details)
         recommendationsCarousel.setup(details)
+    }
+    
+    // MARK: - Private Properties
+    
+    @objc
+    private func close() {
+        delegate.close()
     }
 }
 
@@ -158,6 +181,7 @@ extension MovieDetailsView: ViewCodeProtocol {
         addSubview(scrollView)
         scrollView.addSubview(scrollContent)
         scrollContent.addSubview(backdropImage)
+        scrollContent.addSubview(backButton)
         scrollContent.addSubview(detailsContent)
         detailsContent.addSubview(moviePoster)
         detailsContent.addSubview(nameMovie)
@@ -199,11 +223,11 @@ extension MovieDetailsView: ViewCodeProtocol {
             make.height.equalTo(230)
             make.width.equalTo(160)
             make.left.equalTo(detailsContent).offset(16)
-            make.top.equalTo(detailsContent.snp.top).offset(-30)
+            make.top.equalTo(detailsContent.snp.top).offset(-20)
         }
         
         nameMovie.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(45)
+            make.top.equalToSuperview().offset(35)
             make.left.equalTo(moviePoster.snp.right).offset(16)
             make.right.equalToSuperview().inset(16)
         }
@@ -263,9 +287,15 @@ extension MovieDetailsView: ViewCodeProtocol {
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().inset(16)
         }
+        
+        backButton.snp.makeConstraints { make in
+            make.height.width.equalTo(45)
+            make.top.left.equalTo(backdropImage).offset(8)
+        }
     }
     
     func setupComponents() {
-        backgroundColor = .systemBackground
+        backgroundColor = .black
+        backButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
 }

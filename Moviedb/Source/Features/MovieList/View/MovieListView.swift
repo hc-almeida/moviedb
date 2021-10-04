@@ -12,6 +12,12 @@ class MovieListView: UIView {
     
     // MARK: - User Interface Components
     
+    private lazy var emptyListView: EmptyMovieListView = {
+        let view = EmptyMovieListView(frame: .zero)
+        view.backgroundColor = .black
+        return view
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -21,7 +27,7 @@ class MovieListView: UIView {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .black
         return collectionView
     }()
     
@@ -62,6 +68,8 @@ class MovieListView: UIView {
         collectionView.performBatchUpdates({
             collectionView.insertItems(at: indexPaths)
         })
+        
+        setCollectionHidden(movieList.isEmpty)
     }
     
     func reloadMovies(_ movies: [MovieViewModel], animated: Bool) {
@@ -80,6 +88,11 @@ class MovieListView: UIView {
     
     private func selectMovie(at index: Int) {
         delegate.selectMovie(at: index)
+    }
+    
+    private func setCollectionHidden(_ hidden: Bool) {
+        emptyListView.isHidden = !hidden
+        collectionView.isHidden = hidden
     }
 }
 
@@ -167,9 +180,15 @@ extension MovieListView: ViewCodeProtocol {
     
     func setupSubviews() {
         addSubview(collectionView)
+        addSubview(emptyListView)
     }
     
     func setupConstraints() {
+        emptyListView.snp.makeConstraints { make in
+            make.left.right.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).offset(48)
+        }
+        
         collectionView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
@@ -178,7 +197,9 @@ extension MovieListView: ViewCodeProtocol {
     }
     
     func setupComponents() {
-        backgroundColor = .systemBackground
+        emptyListView.isHidden = true
+//        backgroundColor = .systemBackground
+        backgroundColor = .black
         MovieCell.registerOn(collectionView)
         collectionView.accessibilityIdentifier = "movieCollection"
     }

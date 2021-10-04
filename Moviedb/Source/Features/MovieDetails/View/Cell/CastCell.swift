@@ -13,29 +13,37 @@ class CastCell: UICollectionViewCell {
     
     private lazy var contentCard: UIView = {
         let view = UIView(frame: .zero)
-//        view.layer.shadowOpacity = 0.5
+        view.backgroundColor = .black
+        return view
+    }()
+    
+    private lazy var contentImage: UIView = {
+        let view = UIView(frame: .zero)
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
         return view
     }()
     
     private lazy var castImage: UIImageView = {
         let image = UIImageView(frame: .zero)
-        image.backgroundColor = .black
         image.contentMode = .scaleAspectFill
         return image
     }()
     
     private lazy var nameActor: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Hellen"
         label.textAlignment = .center
+        label.textColor = .white
+        label.lineBreakMode = .byWordWrapping
         label.font = .systemFont(ofSize: 16)
         return label
     }()
     
     private lazy var characterActor: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Caroline"
         label.textAlignment = .center
+        label.numberOfLines = 0
+        label.textColor = .white
         label.font = .systemFont(ofSize: 14)
         return label
     }()
@@ -64,10 +72,17 @@ class CastCell: UICollectionViewCell {
     
     // MARK: - Public Functions
 
-    func setup(movie: Movie) {
-        if let poster = movie.posterPath {
-            castImage.load(url: poster)
+    func setup(cast: Cast?) {
+        guard let cast = cast else { return }
+        
+        if let profilePath = cast.profilePath {
+            castImage.load(url: MovieAPI.build(image: profilePath, size: .w500))
+        } else {
+            castImage.image = UIImage(named: "imageNotFound")
         }
+        
+        nameActor.text = cast.name
+        characterActor.text = cast.character
     }
     
     // MARK: - Private Functions
@@ -84,7 +99,8 @@ extension CastCell: ViewCodeProtocol {
     
     func setupSubviews() {
         addSubview(contentCard)
-        contentCard.addSubview(castImage)
+        contentCard.addSubview(contentImage)
+        contentImage.addSubview(castImage)
         contentCard.addSubview(nameActor)
         contentCard.addSubview(characterActor)
     }
@@ -95,22 +111,25 @@ extension CastCell: ViewCodeProtocol {
             make.right.bottom.equalToSuperview()
         }
         
-        castImage.snp.makeConstraints { make in
+        contentImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
+            make.left.right.equalToSuperview()
             make.height.equalTo(130)
             make.width.equalTo(90)
         }
         
+        castImage.snp.makeConstraints { make in
+            make.left.top.right.bottom.equalToSuperview()
+        }
+        
         nameActor.snp.makeConstraints { make in
-            make.top.equalTo(castImage.snp.bottom).offset(4)
+            make.top.equalTo(contentImage.snp.bottom).offset(8)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
         }
         
         characterActor.snp.makeConstraints { make in
-            make.top.equalTo(nameActor.snp.bottom).offset(2)
+            make.top.equalTo(nameActor.snp.bottom).offset(4)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
         }

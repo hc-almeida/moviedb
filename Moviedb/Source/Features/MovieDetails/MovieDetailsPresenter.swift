@@ -15,7 +15,7 @@ protocol MovieDetailsPresenterProotocol {
 }
 
 class MovieDetailsPresenter: MovieDetailsPresenterProotocol {
-    
+
     // MARK: - VIP Properties
     
     weak var viewController: MovieDetailsViewControllerProtocol!

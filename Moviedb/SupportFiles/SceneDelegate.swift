@@ -23,7 +23,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let viewController = MovieListBuilder.build()
         let navigation = UINavigationController(rootViewController: viewController)
+        
+        setupAppearanceNavigationBar(navigation: navigation)
         window?.rootViewController = navigation
+    }
+    
+    private func setupAppearanceNavigationBar(navigation: UINavigationController) {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .black
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigation.navigationBar.tintColor = .white
+        navigation.navigationBar.standardAppearance = appearance
+        navigation.navigationBar.compactAppearance = appearance
+        navigation.navigationBar.scrollEdgeAppearance = appearance
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

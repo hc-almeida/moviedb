@@ -12,6 +12,8 @@ protocol MovieListPresenterProtocol {
     func showMovieList(_ movieList: [Movie])
     
     func showMovieListError(_ error: MovieError)
+    
+    func reloadMovies(_ movieList: [Movie], animated: Bool)
 }
 
 class MovieListPresenter: MovieListPresenterProtocol  {
@@ -28,6 +30,11 @@ class MovieListPresenter: MovieListPresenterProtocol  {
     func showMovieListError(_ error: MovieError) {
         viewController.showMovieListError(
             error.errorDescription ?? "Desculpe, algo deu errado. Tente mais tarde!")
+    }
+    
+    func reloadMovies(_ movieList: [Movie], animated: Bool) {
+        let viewModel = buildViewModel(movieList)
+        viewController.reloadMovies(viewModel, animated: animated)
     }
     
     // MARK: - Private Functions

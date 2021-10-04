@@ -14,9 +14,15 @@ protocol MovieListDataStoreProtocol {
 
 protocol MovieListInteractorProtocol: MovieListDataStoreProtocol {
     
+    func reset()
+    
     func fecthMovieList()
     
     func fetchNextPage()
+
+    func searchMovieList(_ movieName: String)
+    
+    func reloadMovies(animated: Bool)
     
     func select(at index: Int)
 }
@@ -32,19 +38,21 @@ class MovieListInteractor: MovieListInteractorProtocol {
     var movie: Movie?
     
     // MARK: - Private Properties
+
+    private var searchText = ""
     
     private var movieList: [Movie] = []
     
-    private let movieWorker: MovieWorkerProtocol
+    private let movieListWorker: MovieListWorkerProtocol
     
     // MARK: - Inits
     
     init() {
-        self.movieWorker = MovieWorker()
+        self.movieListWorker = MovieListWorker()
     }
     
     func fecthMovieList() {
-        movieWorker.fetchMovieList(section: .popular) { [unowned self] result in
+        movieListWorker.fetchMovieList(section: .popular) { [unowned self] result in
             switch result {
             case .success(let response):
                 self.didFetchMovieWithSuccess(response)
@@ -54,13 +62,36 @@ class MovieListInteractor: MovieListInteractorProtocol {
         }
     }
     
+    func searchMovieList(_ movieName: String) {
+        searchText = movieName.capitalized
+        
+        movieListWorker.fetchMovieList(searchText: searchText) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.didFetchMovieWithSuccess(response)
+            case .failure(let error):
+                self?.didFetchFailure(error)
+            }
+        }
+    }
+    
+    func reset() {
+        movieList = []
+        searchText = ""
+        reloadMovies(animated: true)
+    }
+    
     func fetchNextPage() {
-        movieWorker.nextPage()
+        movieListWorker.nextPage()
         fecthMovieList()
     }
     
     func select(at index: Int) {
         movie = movieList[index]
+    }
+    
+    func reloadMovies(animated: Bool) {
+        presenter.reloadMovies(movieList, animated: animated)
     }
     
     // MARK: - Private Functions
