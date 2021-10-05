@@ -5,7 +5,6 @@
 //  Created by Hellen on 04/10/21.
 //
 
-import UIKit
 @testable import Moviedb
 
 class MovieListViewControllerMock: MovieListViewControllerProtocol {
