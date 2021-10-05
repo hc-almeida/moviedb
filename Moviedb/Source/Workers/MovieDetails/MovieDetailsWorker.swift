@@ -17,6 +17,8 @@ protocol MovieDetailsWorkerProtocol {
 
 class MovieDetailsWorker: MovieDetailsWorkerProtocol {
     
+    // MARK: - Public Functions
+    
     func fetchMovieDetails(of movieID: Int, completion: @escaping MovieDetailsResult) {
         let url = MovieAPI.build(detailsOf: movieID)
         

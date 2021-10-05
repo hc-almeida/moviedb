@@ -24,7 +24,11 @@ protocol MovieListWorkerProtocol {
 
 class MovieListWorker: MovieListWorkerProtocol {
     
+    // MARK: - Public Properties
+    
     var currentPage = 1
+    
+    // MARK: - Public Functions
     
     func nextPage() {
         self.currentPage += 1

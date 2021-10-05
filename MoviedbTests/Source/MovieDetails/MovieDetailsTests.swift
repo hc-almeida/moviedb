@@ -79,5 +79,4 @@ class MovieDetailsTests: XCTestCase {
         
         return viewController
     }
-
 }
