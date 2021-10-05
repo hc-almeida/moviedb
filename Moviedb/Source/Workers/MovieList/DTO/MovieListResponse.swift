@@ -10,8 +10,11 @@ import Foundation
 struct MovieListResponse: Decodable {
     
     let page: Int
+    
     let totalPages: Int
+    
     let totalResult: Int
+    
     let results: [Movie]
     
     private enum CodingKeys: String, CodingKey {

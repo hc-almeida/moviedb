@@ -51,8 +51,9 @@
 		74EAF524270ADCCC00ECE944 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF523270ADCCC00ECE944 /* UIView+Extension.swift */; };
 		74EAF526270B7B0C00ECE944 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF525270B7B0C00ECE944 /* String+Extensions.swift */; };
 		74EAF52C270BA26400ECE944 /* MovieListViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF52B270BA26400ECE944 /* MovieListViewControllerMock.swift */; };
-		74EAF52E270BA57500ECE944 /* MovieListBuilderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF52D270BA57500ECE944 /* MovieListBuilderMock.swift */; };
 		74EAF531270BA8FC00ECE944 /* MovieListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF530270BA8FC00ECE944 /* MovieListTests.swift */; };
+		74EAF533270BFBAA00ECE944 /* MovieListWorkerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF532270BFBAA00ECE944 /* MovieListWorkerMock.swift */; };
+		74EAF535270BFF5900ECE944 /* MovieListResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF534270BFF5900ECE944 /* MovieListResponseMock.swift */; };
 		D4D44E8925C0B197000F6268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D44E8825C0B197000F6268 /* AppDelegate.swift */; };
 		D4D44E8B25C0B197000F6268 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D44E8A25C0B197000F6268 /* SceneDelegate.swift */; };
 		D4D44E9225C0B198000F6268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4D44E9125C0B198000F6268 /* Assets.xcassets */; };
@@ -126,8 +127,9 @@
 		74EAF523270ADCCC00ECE944 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		74EAF525270B7B0C00ECE944 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		74EAF52B270BA26400ECE944 /* MovieListViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerMock.swift; sourceTree = "<group>"; };
-		74EAF52D270BA57500ECE944 /* MovieListBuilderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListBuilderMock.swift; sourceTree = "<group>"; };
 		74EAF530270BA8FC00ECE944 /* MovieListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTests.swift; sourceTree = "<group>"; };
+		74EAF532270BFBAA00ECE944 /* MovieListWorkerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListWorkerMock.swift; sourceTree = "<group>"; };
+		74EAF534270BFF5900ECE944 /* MovieListResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListResponseMock.swift; sourceTree = "<group>"; };
 		980D675223AAB26F43F61D2C /* Pods-Moviedb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moviedb.debug.xcconfig"; path = "Target Support Files/Pods-Moviedb/Pods-Moviedb.debug.xcconfig"; sourceTree = "<group>"; };
 		A0FF8D7B87DF0EE93A3E8A9E /* Pods-Moviedb-MoviedbUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moviedb-MoviedbUITests.debug.xcconfig"; path = "Target Support Files/Pods-Moviedb-MoviedbUITests/Pods-Moviedb-MoviedbUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B30D365DF3D479E3F6AAC7A4 /* Pods_Moviedb_MoviedbUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moviedb_MoviedbUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,7 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				74EAF52B270BA26400ECE944 /* MovieListViewControllerMock.swift */,
-				74EAF52D270BA57500ECE944 /* MovieListBuilderMock.swift */,
+				74EAF532270BFBAA00ECE944 /* MovieListWorkerMock.swift */,
+				74EAF534270BFF5900ECE944 /* MovieListResponseMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -774,9 +777,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74EAF52E270BA57500ECE944 /* MovieListBuilderMock.swift in Sources */,
+				74EAF533270BFBAA00ECE944 /* MovieListWorkerMock.swift in Sources */,
 				74EAF52C270BA26400ECE944 /* MovieListViewControllerMock.swift in Sources */,
 				74EAF531270BA8FC00ECE944 /* MovieListTests.swift in Sources */,
+				74EAF535270BFF5900ECE944 /* MovieListResponseMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
