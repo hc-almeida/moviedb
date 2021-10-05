@@ -99,7 +99,6 @@ extension CastCustomCarousel: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return getCastMovieCell(indexPath: indexPath)
     }
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout Extension
