@@ -7,15 +7,12 @@
 
 import Foundation
 
-protocol MovieDetailsRouterProtocol {
-    
-}
+protocol MovieDetailsRouterProtocol { }
 
 class MovieDetailsRouter: MovieDetailsRouterProtocol {
     
     // MARK: - VIP Properties
     
     weak var viewController: MovieDetailsViewController!
-    
     
 }
