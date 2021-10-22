@@ -21,11 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         
-        let viewController = MovieListBuilder.build()
-        let navigation = UINavigationController(rootViewController: viewController)
-        
-        setupAppearanceNavigationBar(navigation: navigation)
-        window?.rootViewController = navigation
+        window?.rootViewController = TabBar()
     }
     
     private func setupAppearanceNavigationBar(navigation: UINavigationController) {

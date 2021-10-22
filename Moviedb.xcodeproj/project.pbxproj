@@ -10,6 +10,8 @@
 		181A7CB54B8276C02AF8940F /* Pods_Moviedb_MoviedbUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B30D365DF3D479E3F6AAC7A4 /* Pods_Moviedb_MoviedbUITests.framework */; };
 		530CBB3D90221E472603A24D /* Pods_Moviedb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1623452D8C8391F3F4CFE09F /* Pods_Moviedb.framework */; };
 		69752776C9CC8C6D4C80B852 /* Pods_MoviedbTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAC8795AC7C959C5119F948 /* Pods_MoviedbTests.framework */; };
+		741485E927237DD200DF4047 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741485E827237DD200DF4047 /* TabBar.swift */; };
+		741485EC27237EBD00DF4047 /* FaroviteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741485EB27237EBD00DF4047 /* FaroviteListViewController.swift */; };
 		741F7EE026EF06DD00F35151 /* CastCustomCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741F7EDF26EF06DD00F35151 /* CastCustomCarousel.swift */; };
 		741F7EE226EF0E3B00F35151 /* CastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741F7EE126EF0E3B00F35151 /* CastCell.swift */; };
 		742F5DBD26DAAC1E00651B7C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F5DBC26DAAC1E00651B7C /* UIViewController+Extensions.swift */; };
@@ -90,6 +92,8 @@
 		1623452D8C8391F3F4CFE09F /* Pods_Moviedb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moviedb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D617A88CD050B95ADCB9751 /* Pods-Moviedb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moviedb.release.xcconfig"; path = "Target Support Files/Pods-Moviedb/Pods-Moviedb.release.xcconfig"; sourceTree = "<group>"; };
 		2DAC8795AC7C959C5119F948 /* Pods_MoviedbTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviedbTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		741485E827237DD200DF4047 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		741485EB27237EBD00DF4047 /* FaroviteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaroviteListViewController.swift; sourceTree = "<group>"; };
 		741F7EDF26EF06DD00F35151 /* CastCustomCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCustomCarousel.swift; sourceTree = "<group>"; };
 		741F7EE126EF0E3B00F35151 /* CastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCell.swift; sourceTree = "<group>"; };
 		742F5DBC26DAAC1E00651B7C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -199,6 +203,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		741485EA27237E9700DF4047 /* FavoriteList */ = {
+			isa = PBXGroup;
+			children = (
+				741485EB27237EBD00DF4047 /* FaroviteListViewController.swift */,
+			);
+			path = FavoriteList;
+			sourceTree = "<group>";
+		};
 		7455FD4726753B0E00A32DE4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +235,7 @@
 			children = (
 				7455FD4C26753CFC00A32DE4 /* MovieError.swift */,
 				74C17EEC26B80D62004461BB /* ViewCodeProtocol.swift */,
+				741485E827237DD200DF4047 /* TabBar.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -272,6 +285,7 @@
 		74C17EEA26B80CD1004461BB /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				741485EA27237E9700DF4047 /* FavoriteList */,
 				74C17EEB26B80CDE004461BB /* MovieList */,
 				74B8F60026E7F55A00DA21A9 /* MovieDetails */,
 			);
@@ -780,6 +794,8 @@
 				74BD574E26F69F68005CE3C8 /* RecommendedCell.swift in Sources */,
 				74C17EF226B80E3F004461BB /* MovieListView.swift in Sources */,
 				742F5DBD26DAAC1E00651B7C /* UIViewController+Extensions.swift in Sources */,
+				741485EC27237EBD00DF4047 /* FaroviteListViewController.swift in Sources */,
+				741485E927237DD200DF4047 /* TabBar.swift in Sources */,
 				74BD575C26F6AF8B005CE3C8 /* Int+Extension.swift in Sources */,
 				74BD576326F79802005CE3C8 /* MovieListViewModel.swift in Sources */,
 				D4ECB65D25C9C5700057C768 /* Movie.swift in Sources */,
