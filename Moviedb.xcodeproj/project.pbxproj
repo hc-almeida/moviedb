@@ -228,12 +228,12 @@
 		741485EA27237E9700DF4047 /* FavoriteList */ = {
 			isa = PBXGroup;
 			children = (
+				741485F82723938F00DF4047 /* View */,
 				74611E2527246C580072E0AC /* FavoriteMovieBuilder.swift */,
 				74611E2727246CDE0072E0AC /* FavoriteMovieViewController.swift */,
 				74611E2927246D4A0072E0AC /* FavoriteMovieInteractor.swift */,
 				74611E2B27246D730072E0AC /* FavoriteMoviePresenter.swift */,
 				74611E2D27246EB90072E0AC /* FavoriteMovieRouter.swift */,
-				741485F82723938F00DF4047 /* View */,
 			);
 			path = FavoriteList;
 			sourceTree = "<group>";

@@ -21,22 +21,22 @@ class TabBar: UITabBarController {
     }
     
     func movieListNavigationController() -> UINavigationController {
-        let character = MovieListBuilder.build()
-        character.title = "Filmes"
-        character.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+        let viewController = MovieListBuilder.build()
+        viewController.title = "Filmes"
+        viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
         
-        let navigation = UINavigationController(rootViewController: character)
+        let navigation = UINavigationController(rootViewController: viewController)
         setupAppearanceNavigationBar(navigation: navigation)
         
         return navigation
     }
     
     func favoritesNavigationController() -> UINavigationController {
-        let favoriteVC = FavoriteMovieViewController()
-        favoriteVC.title = "Favoritos"
-        favoriteVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        let viewController = FavoriteMovieBuilder.build()
+        viewController.title = "Favoritos"
+        viewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         
-        return UINavigationController(rootViewController: favoriteVC)
+        return UINavigationController(rootViewController: viewController)
     }
         
     private func setupAppearanceNavigationBar(navigation: UINavigationController) {

@@ -41,6 +41,6 @@ class FavoriteMovieInteractor: FavoriteMovieInteractorProtocol {
     
     func getMovie() {
         let movies = favoriteWorker.get()
-//        presenter.getMovie(movies: movies)
+        presenter.getMovies(movies: movies)
     }
 }

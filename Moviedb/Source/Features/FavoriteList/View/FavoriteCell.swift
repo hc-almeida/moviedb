@@ -53,7 +53,12 @@ class FavoriteCell: UITableViewCell {
     
     func setup(movie: MovieObject) {
         name.text = movie.title
-        movieImage.load(url: movie.posterPath ?? "")
+        
+        if let posterPath = movie.posterPath {
+            print("load image")
+            movieImage.load(url: posterPath)
+        }
+      
     }
 
 //    func setup(name2: String, image2: UIImage) {

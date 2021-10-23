@@ -9,6 +9,7 @@ import UIKit
 
 protocol FavoriteMovieViewControllerProtocol: AnyObject {
     
+    func getMovies(movies: [MovieObject])
 }
 
 class FavoriteMovieViewController: UIViewController {
@@ -36,8 +37,7 @@ class FavoriteMovieViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigation()
-        interactor.chamarInteractor()
-//        interactor.getMovie()
+        interactor.getMovie()
     }
     
     private func setupNavigation() {
@@ -55,5 +55,8 @@ extension FavoriteMovieViewController: FavoriteListViewDelegate {
 
 extension FavoriteMovieViewController: FavoriteMovieViewControllerProtocol {
 
+    func getMovies(movies: [MovieObject]) {
+        favoriteListView.setup(movies)
+    }
     
 }
