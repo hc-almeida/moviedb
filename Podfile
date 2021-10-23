@@ -10,6 +10,7 @@ target 'Moviedb' do
     pod 'SnapKit', '~> 5.0.0'
     pod 'Kingfisher', '6.3.0'
     pod 'SwiftLint', '~> 0.39.2'
+    pod 'RealmSwift', '~>10'
 
   target 'MoviedbTests' do
     inherit! :search_paths

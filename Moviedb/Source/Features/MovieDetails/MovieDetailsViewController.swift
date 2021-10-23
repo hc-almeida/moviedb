@@ -77,6 +77,7 @@ extension MovieDetailsViewController: MovieDetailsViewDelegate {
     }
     
     func favorite() {
+        interactor.save()
         print("clicou em favoritar")
     }
 }

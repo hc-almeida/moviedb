@@ -23,8 +23,16 @@ class FaroviteListViewController: UIViewController, FavoriteListViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .black
+        var movie = MovieObject()
+        
+        let favoriteWorker = FavoriteWorker()
+        switch favoriteWorker.get() {
+        case .success(let localMovie):
+            print("filmes salvos \(localMovie)")
+        default:
+            break
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

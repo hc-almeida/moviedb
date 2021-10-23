@@ -27,6 +27,8 @@
 		7455FD50267542FD00A32DE4 /* MovieListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7455FD4F267542FD00A32DE4 /* MovieListWorker.swift */; };
 		7455FD532675464500A32DE4 /* MovieListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7455FD522675464500A32DE4 /* MovieListResponse.swift */; };
 		7455FD5526754D5500A32DE4 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7455FD5426754D5500A32DE4 /* MovieAPI.swift */; };
+		74611E1A272456CA0072E0AC /* MovieObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74611E19272456CA0072E0AC /* MovieObject.swift */; };
+		74611E1C272458250072E0AC /* FavoriteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74611E1B272458250072E0AC /* FavoriteWorker.swift */; };
 		7487016D26D98B1A001D7DEE /* MovieListViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7487016C26D98B19001D7DEE /* MovieListViewDelegate.swift */; };
 		74B8F60226E7F6DF00DA21A9 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8F60126E7F6DF00DA21A9 /* MovieDetailsViewController.swift */; };
 		74B8F60426E7F73300DA21A9 /* MovieDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8F60326E7F73300DA21A9 /* MovieDetailsPresenter.swift */; };
@@ -114,6 +116,8 @@
 		7455FD4F267542FD00A32DE4 /* MovieListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListWorker.swift; sourceTree = "<group>"; };
 		7455FD522675464500A32DE4 /* MovieListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListResponse.swift; sourceTree = "<group>"; };
 		7455FD5426754D5500A32DE4 /* MovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
+		74611E19272456CA0072E0AC /* MovieObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieObject.swift; sourceTree = "<group>"; };
+		74611E1B272458250072E0AC /* FavoriteWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteWorker.swift; sourceTree = "<group>"; };
 		7487016C26D98B19001D7DEE /* MovieListViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewDelegate.swift; sourceTree = "<group>"; };
 		74B8F60126E7F6DF00DA21A9 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		74B8F60326E7F73300DA21A9 /* MovieDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsPresenter.swift; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 			children = (
 				74EAF521270ABF1100ECE944 /* MovieDetails */,
 				74EAF520270ABED100ECE944 /* MovieList */,
+				74611E1B272458250072E0AC /* FavoriteWorker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				D4ECB66125C9CA6E0057C768 /* Genre.swift */,
 				D4ECB65C25C9C5700057C768 /* Movie.swift */,
 				744EB0E326F7EBE9002F25B9 /* Credits.swift */,
+				74611E19272456CA0072E0AC /* MovieObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -804,6 +810,7 @@
 				7455FD4A26753C5900A32DE4 /* NetworkManager.swift in Sources */,
 				74B8F60626E7F79100DA21A9 /* MovieDetailsInteractor.swift in Sources */,
 				74B8F60A26E7F8EA00DA21A9 /* MovieDetailsBuilder.swift in Sources */,
+				74611E1A272456CA0072E0AC /* MovieObject.swift in Sources */,
 				74BD575226F6AB26005CE3C8 /* MovieDetailsWorker.swift in Sources */,
 				74C17EF526B813EF004461BB /* UICollectionViewCell+Extension.swift in Sources */,
 				74BD575826F6AD5B005CE3C8 /* Crew.swift in Sources */,
@@ -811,6 +818,7 @@
 				74BD575A26F6AEF8005CE3C8 /* RecommendationResponse.swift in Sources */,
 				7449DBA326D2AB04005B342F /* UIImageView+Extensions.swift in Sources */,
 				74C17EFA26B814EB004461BB /* MovieListPresenter.swift in Sources */,
+				74611E1C272458250072E0AC /* FavoriteWorker.swift in Sources */,
 				74B8F60D26E7FAC800DA21A9 /* MovieDetailsView.swift in Sources */,
 				74C17EFC26B8153F004461BB /* MovieListInteractor.swift in Sources */,
 				741485F72723938900DF4047 /* FavoriteListView.swift in Sources */,

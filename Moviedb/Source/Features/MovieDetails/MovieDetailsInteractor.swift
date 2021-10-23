@@ -15,6 +15,8 @@ protocol MovieDetailsDataStoreProtocol {
 protocol MovieDetailsInteractorProtocol {
     
     func fetchMovieDetails()
+    
+    func save()
 }
 
 class MovieDetailsInteractor: MovieDetailsInteractorProtocol, MovieDetailsDataStoreProtocol {
@@ -31,14 +33,18 @@ class MovieDetailsInteractor: MovieDetailsInteractorProtocol, MovieDetailsDataSt
     
     private let movieDetailsWorker: MovieDetailsWorkerProtocol
     
+    private let favoriteWorker: FavoriteWorkerProtocol
+    
     // MARK: - Inits
     
     init() {
         self.movieDetailsWorker = MovieDetailsWorker()
+        self.favoriteWorker = FavoriteWorker()
     }
     
-    init(movieDetailsWorker: MovieDetailsWorkerProtocol) {
+    init(movieDetailsWorker: MovieDetailsWorkerProtocol, favoriteWorker: FavoriteWorkerProtocol) {
         self.movieDetailsWorker = movieDetailsWorker
+        self.favoriteWorker = favoriteWorker
     }
     
     // MARK: - Public functions
@@ -52,5 +58,9 @@ class MovieDetailsInteractor: MovieDetailsInteractorProtocol, MovieDetailsDataSt
                 presenter.showMovieDetailsError(error)
             }
         }
+    }
+    
+    func save() {
+        favoriteWorker.save(movie)
     }
 }
