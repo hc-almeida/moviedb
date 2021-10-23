@@ -18,7 +18,7 @@ class FavoriteCell: UITableViewCell {
         return view
     }()
     
-    private lazy var characterImage: UIImageView = {
+    private lazy var movieImage: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 6
@@ -50,11 +50,16 @@ class FavoriteCell: UITableViewCell {
     }
     
     // MARK: - Public Functions
-
-    func setup(name2: String, image2: UIImage) {
-        name.text = name2
-        characterImage.image = image2
+    
+    func setup(movie: MovieObject) {
+        name.text = movie.title
+        movieImage.load(url: movie.posterPath ?? "")
     }
+
+//    func setup(name2: String, image2: UIImage) {
+//        name.text = name2
+//        movieImage.image = image2
+//    }
 }
 
 // MARK: - ViewCodeProtocol Extension
@@ -63,7 +68,7 @@ extension FavoriteCell: ViewCodeProtocol {
 
     func setupSubviews() {
         addSubview(cardView)
-        cardView.addSubview(characterImage)
+        cardView.addSubview(movieImage)
         addSubview(name)
     }
     
@@ -76,7 +81,7 @@ extension FavoriteCell: ViewCodeProtocol {
             make.bottom.equalToSuperview().inset(16)
         }
         
-        characterImage.snp.makeConstraints { make in
+        movieImage.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
         }
 

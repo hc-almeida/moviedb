@@ -16,15 +16,13 @@ class TabBar: UITabBarController {
         tabBar.tintColor = .white
         tabBar.barTintColor = .black
         tabBar.isTranslucent = false
-        viewControllers = [createMovieListNavigationController(),
-                           createFavoritesNavigationController()]
+        viewControllers = [movieListNavigationController(),
+                           favoritesNavigationController()]
     }
     
-    func createMovieListNavigationController() -> UINavigationController {
+    func movieListNavigationController() -> UINavigationController {
         let character = MovieListBuilder.build()
-//        let image = UIImage(named: "shield")
-//        character.tabBarItem = UITabBarItem(title: "Character", image: image, tag: 0)
-        character.title = "Character"
+        character.title = "Filmes"
         character.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
         
         let navigation = UINavigationController(rootViewController: character)
@@ -33,9 +31,9 @@ class TabBar: UITabBarController {
         return navigation
     }
     
-    func createFavoritesNavigationController() -> UINavigationController {
-        let favoriteVC = FaroviteListViewController()
-        favoriteVC.title = "Favorites"
+    func favoritesNavigationController() -> UINavigationController {
+        let favoriteVC = FavoriteMovieViewController()
+        favoriteVC.title = "Favoritos"
         favoriteVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         
         return UINavigationController(rootViewController: favoriteVC)

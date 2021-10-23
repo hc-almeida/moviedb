@@ -10,6 +10,8 @@ import RealmSwift
 
 protocol FavoriteWorkerProtocol {
     
+    func get() -> [MovieObject]
+    
     @discardableResult
     func save(_ customer: Movie) -> Result<MovieObject, MovieError>
 }
@@ -25,14 +27,15 @@ class FavoriteWorker: FavoriteWorkerProtocol {
         }
     }()
     
-    func get() -> Result<Results<MovieObject>?, MovieError>  {
-        do {
-            let realm = try Realm()
-            let resultMovie = realm.objects(MovieObject.self)
-            return .success(resultMovie)
-        } catch {
-            return .failure(.decodeError) // Corrigir erros
+    func get() -> [MovieObject] {
+        let resultMovie = realm.objects(MovieObject.self)
+        
+        var movies = [MovieObject]()
+        for movie in resultMovie {
+            movies.append(movie)
         }
+        
+        return movies
     }
     
     func save(_ movie: Movie) -> Result<MovieObject, MovieError> {

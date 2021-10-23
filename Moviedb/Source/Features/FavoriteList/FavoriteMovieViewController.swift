@@ -1,13 +1,21 @@
 //
-//  FaroviteListViewController.swift
+//  FavoriteMovieViewController.swift
 //  Moviedb
 //
-//  Created by Hellen on 22/10/21.
+//  Created by Hellen on 23/10/21.
 //
 
 import UIKit
 
-class FaroviteListViewController: UIViewController, FavoriteListViewDelegate {
+protocol FavoriteMovieViewControllerProtocol: AnyObject {
+    
+}
+
+class FavoriteMovieViewController: UIViewController {
+    
+    var interactor: FavoriteMovieInteractorProtocol!
+    
+    var router: FavoriteMovieRouterProtocol!
     
     // MARK: - Private Properties
     
@@ -23,21 +31,13 @@ class FaroviteListViewController: UIViewController, FavoriteListViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
-        var movie = MovieObject()
-        
-        let favoriteWorker = FavoriteWorker()
-        switch favoriteWorker.get() {
-        case .success(let localMovie):
-            print("filmes salvos \(localMovie)")
-        default:
-            break
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigation()
+        interactor.chamarInteractor()
+//        interactor.getMovie()
     }
     
     private func setupNavigation() {
@@ -45,5 +45,15 @@ class FaroviteListViewController: UIViewController, FavoriteListViewDelegate {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.hidesSearchBarWhenScrolling = false
     }
+    
+}
+
+extension FavoriteMovieViewController: FavoriteListViewDelegate {
+    
+}
+
+
+extension FavoriteMovieViewController: FavoriteMovieViewControllerProtocol {
+
     
 }

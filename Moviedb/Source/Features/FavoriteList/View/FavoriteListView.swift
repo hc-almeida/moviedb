@@ -19,7 +19,7 @@ class FavoriteListView: UIView {
     
     // MARK: - Private Properties
     
-    private var characterList: [Character] = []
+    private var movieList: [MovieObject] = []
     
     private unowned let delegate: FavoriteListViewDelegate
     
@@ -37,15 +37,14 @@ class FavoriteListView: UIView {
     
     // MARK: - Public Functions
     
-    func setup(_ characterList: [Character] ) {
-        self.characterList.append(contentsOf: characterList)
-        
+    func setup(_ movieList: [MovieObject] ) {
+        self.movieList.append(contentsOf: movieList)
         tableView.reloadData()
     }
     
     // MARK: - Private Functions
     
-    private func selectCharacter(at index: Int) {
+    private func selectMovie(at index: Int) {
 //        delegate.selectCharacter(at: index)
     }
 }
@@ -83,17 +82,18 @@ extension FavoriteListView: UITableViewDelegate {
                 withIdentifier: identifier, for: indexPath) as? FavoriteCell
         else { return UITableViewCell() }
         
-        cell.setup(name2: "Hellen Caroline", image2: UIImage(named: "joker1") ?? UIImage())
+//        cell.setup(name2: "Hellen Caroline", image2: UIImage(named: "joker1") ?? UIImage())
+        cell.setup(movie: movieList[indexPath.item])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectCharacter(at: indexPath.item)
+        selectMovie(at: indexPath.item)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 1 == characterList.count {
+        if indexPath.row + 1 == movieList.count {
 
         }
     }
@@ -104,6 +104,6 @@ extension FavoriteListView: UITableViewDelegate {
 extension FavoriteListView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return movieList.count
     }
 }
