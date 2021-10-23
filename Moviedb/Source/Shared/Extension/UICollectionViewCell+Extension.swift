@@ -14,3 +14,11 @@ extension UICollectionViewCell {
         collectionView.register(self.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 }
+
+extension UITableViewCell {
+    
+    static func registerOn(_ tableView: UITableView) {
+        let reuseIdentifier = String(describing: self.self)
+        tableView.register(self.self, forCellReuseIdentifier: reuseIdentifier)
+    }
+}

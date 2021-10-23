@@ -64,7 +64,7 @@ extension MovieDetailsViewController: MovieDetailsViewControllerProtocol {
     }
 
     func showMovieListError(_ errorMessage: String) {
-        showMessage(title: "", message: errorMessage)
+        showMessage(title: "Ops, houve um erro. Tente novamente", message: errorMessage)
     }
 }
 
@@ -74,5 +74,9 @@ extension MovieDetailsViewController: MovieDetailsViewDelegate {
     
     func close() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func favorite() {
+        print("clicou em favoritar")
     }
 }

@@ -10,4 +10,6 @@ import Foundation
 protocol MovieDetailsViewDelegate: AnyObject {
     
     func close()
+    
+    func favorite()
 }

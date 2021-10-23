@@ -28,6 +28,10 @@ class MovieDetailsView: UIView {
         return imageView
     }()
     
+    private lazy var favoriteButton: UIFavoriteButton = {
+        return UIFavoriteButton(frame: .zero)
+    }()
+    
     private lazy var backButton: UIBackButton = {
         let button = UIBackButton(frame: .zero)
         return button
@@ -171,6 +175,11 @@ class MovieDetailsView: UIView {
     private func close() {
         delegate.close()
     }
+    
+    @objc
+    private func favorite() {
+        delegate.favorite()
+    }
 }
 
 // MARK: - ViewCodeProtocol Extension
@@ -190,6 +199,7 @@ extension MovieDetailsView: ViewCodeProtocol {
         detailsContent.addSubview(tmdbLabel)
         detailsContent.addSubview(noteMovie)
         detailsContent.addSubview(synopsisMovie)
+        detailsContent.addSubview(favoriteButton)
         detailsContent.addSubview(descriptionMovie)
         detailsContent.addSubview(castTitle)
         detailsContent.addSubview(castCarousel)
@@ -254,6 +264,12 @@ extension MovieDetailsView: ViewCodeProtocol {
             make.left.equalTo(tmdbLabel.snp.right).offset(8)
         }
         
+        favoriteButton.snp.makeConstraints { make in
+            make.width.height.equalTo(30)
+            make.top.equalTo(noteMovie.snp.bottom).offset(8)
+            make.left.equalTo(moviePoster.snp.right).offset(16)
+        }
+        
         synopsisMovie.snp.makeConstraints { make in
             make.top.equalTo(moviePoster.snp.bottom).offset(16)
             make.left.equalTo(detailsContent).offset(16)
@@ -297,5 +313,6 @@ extension MovieDetailsView: ViewCodeProtocol {
     func setupComponents() {
         backgroundColor = .black
         backButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+        favoriteButton.addTarget(self, action: #selector(favorite), for: .touchUpInside)
     }
 }
