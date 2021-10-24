@@ -35,7 +35,7 @@ class MovieListView: UIView {
 
     private var movieList: [MovieViewModel] = []
     
-    private unowned let delegate: MovieListViewDelegate
+    private weak var delegate: MovieListViewDelegate?
     
     // MARK: - Inits
     
@@ -83,11 +83,11 @@ class MovieListView: UIView {
     // MARK: - Private Functions
     
     private func fetchMovieListNextPage() {
-        delegate.fetchMovieListNextPage()
+        delegate?.fetchMovieListNextPage()
     }
     
     private func selectMovie(at index: Int) {
-        delegate.selectMovie(at: index)
+        delegate?.selectMovie(at: index)
     }
     
     private func setCollectionHidden(_ hidden: Bool) {

@@ -23,6 +23,8 @@ class MovieListPresenter: MovieListPresenterProtocol  {
     
     weak var viewController: MovieListViewControllerProtocol!
     
+    // MARK: - Public Functions
+    
     func showMovieList(_ movieList: [Movie]) {
         let viewModel = buildViewModel(movieList)
         viewController.showMovieList(viewModel)
