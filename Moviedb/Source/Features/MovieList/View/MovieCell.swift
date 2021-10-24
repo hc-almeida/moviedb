@@ -18,12 +18,12 @@ class MovieCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var movieCard: UIView = {
-        let view = UIView(frame: .zero)
-        view.layer.cornerRadius = 10
-        view.clipsToBounds = true
-        view.backgroundColor = .darkGray
-        return view
+    private lazy var movieCard: UICardView = {
+        let cardView = UICardView(frame: .zero)
+        cardView.cornerRadius = 10
+        cardView.clipsToBounds = true
+        cardView.backgroundColor = .darkGray
+        return cardView
     }()
     
     private lazy var blurCard: UIView = {
@@ -74,7 +74,10 @@ class MovieCell: UICollectionViewCell {
     
     func setup(_ viewModel: MovieViewModel) {
         movieName.text = viewModel.name
-        movieImage.load(url: MovieAPI.build(image: viewModel.imagePoster, size: .w500))
+        
+        viewModel.imagePoster.isEmpty
+            ? movieImage.image = UIImage(named: "imageNotFound")
+            : movieImage.load(url: MovieAPI.build(image: viewModel.imagePoster, size: .w500))
     }
     
     // MARK: - Private Functions

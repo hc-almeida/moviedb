@@ -14,7 +14,7 @@ class MovieListView: UIView {
     
     private lazy var emptyListView: EmptyMovieListView = {
         let view = EmptyMovieListView(frame: .zero)
-        view.backgroundColor = .black
+        view.backgroundColor = .systemBackground
         return view
     }()
     
@@ -27,15 +27,15 @@ class MovieListView: UIView {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .systemBackground
         return collectionView
     }()
     
     // MARK: - Private Properties
-
+    
     private var movieList: [MovieViewModel] = []
     
-    private unowned let delegate: MovieListViewDelegate
+    private weak var delegate: MovieListViewDelegate?
     
     // MARK: - Inits
     
@@ -83,11 +83,11 @@ class MovieListView: UIView {
     // MARK: - Private Functions
     
     private func fetchMovieListNextPage() {
-        delegate.fetchMovieListNextPage()
+        delegate?.fetchMovieListNextPage()
     }
     
     private func selectMovie(at index: Int) {
-        delegate.selectMovie(at: index)
+        delegate?.selectMovie(at: index)
     }
     
     private func setCollectionHidden(_ hidden: Bool) {
@@ -196,7 +196,7 @@ extension MovieListView: ViewCodeProtocol {
     
     func setupComponents() {
         emptyListView.isHidden = true
-        backgroundColor = .black
+        backgroundColor = .systemBackground
         MovieCell.registerOn(collectionView)
         collectionView.accessibilityIdentifier = "movieCollection"
     }

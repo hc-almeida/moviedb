@@ -22,7 +22,6 @@ class EmptyMovieListView: UIView {
     private lazy var title: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
-        label.textColor = .white
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 20)
         label.text = "Não foi encontrado resultados"
@@ -32,7 +31,6 @@ class EmptyMovieListView: UIView {
     private lazy var subtitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
-        label.textColor = .white
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 18)
         label.text = "Tente uma nova pesquisa"
@@ -53,7 +51,6 @@ class EmptyMovieListView: UIView {
 }
 
 // MARK: - ViewCodeProtocol Extension
-
 extension EmptyMovieListView: ViewCodeProtocol {
     
     func setupSubviews() {

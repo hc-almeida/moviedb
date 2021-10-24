@@ -15,27 +15,27 @@ class MovieListViewControllerMock: MovieListViewControllerProtocol {
     
     // MARK: - Public properties
     
-    var movieList: [MovieViewModel] = []
+    private(set) var movieList: [MovieViewModel] = []
     
-    var errorMessage: String?
+    private(set) var errorMessage: String?
     
-    var showMovieListCalled = false
+    private(set) var showMovieListCalled = false
     
-    var showMovieListErrorCalled = false
+    private(set) var showMovieListErrorCalled = false
     
     // MARK: - Public functions
     
     func showMovieList(_ viewModel: MovieListViewModel) {
-        movieList.append(contentsOf: viewModel.movies)
-        showMovieListCalled = true
+        self.movieList.append(contentsOf: viewModel.movies)
+        self.showMovieListCalled = true
     }
     
     func showMovieListError(_ errorMessage: String) {
         self.errorMessage = errorMessage
-        showMovieListErrorCalled = true
+        self.showMovieListErrorCalled = true
     }
     
     func reloadMovies(_ viewModel: MovieListViewModel, animated: Bool) {
-        movieList = viewModel.movies
+        self.movieList = viewModel.movies
     }
 }

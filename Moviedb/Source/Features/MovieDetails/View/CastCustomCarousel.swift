@@ -19,7 +19,7 @@ class CastCustomCarousel: UIView {
         let collectionView = UICollectionView(
             frame: .zero, collectionViewLayout: layout)
 
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .systemBackground
         return collectionView
     }()
     
@@ -81,7 +81,7 @@ extension CastCustomCarousel: ViewCodeProtocol {
     }
     
     func setupComponents() {
-        backgroundColor = .black
+        backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.dataSource = self
         CastCell.registerOn(collectionView)

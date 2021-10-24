@@ -9,6 +9,10 @@ import Foundation
 
 protocol MovieDetailsPresenterProotocol {
     
+    func showLoading()
+    
+    func dismissLoading()
+    
     func showMovieDetails(_ movie: Movie, response: MovieDetailsResponse?)
     
     func showMovieDetailsError(_ error: MovieError?)
@@ -21,6 +25,14 @@ class MovieDetailsPresenter: MovieDetailsPresenterProotocol {
     weak var viewController: MovieDetailsViewControllerProtocol!
     
     // MARK: - Public functions
+    
+    func showLoading() {
+        viewController.showLoading()
+    }
+    
+    func dismissLoading() {
+        viewController.dismissLoading()
+    }
     
     func showMovieDetails(_ movie: Movie, response: MovieDetailsResponse?) {
         guard let movieDetails = response else {

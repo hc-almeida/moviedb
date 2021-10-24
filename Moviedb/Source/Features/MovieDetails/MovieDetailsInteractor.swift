@@ -44,12 +44,18 @@ class MovieDetailsInteractor: MovieDetailsInteractorProtocol, MovieDetailsDataSt
     // MARK: - Public functions
     
     func fetchMovieDetails() {
-        movieDetailsWorker.fetchMovieDetails(of: movie.id) { [unowned self] result in
+        presenter.showLoading()
+        
+        movieDetailsWorker.fetchMovieDetails(of: movie.id) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.presenter.dismissLoading()
+            
             switch result {
             case .success(let response):
-                presenter.showMovieDetails(movie, response: response)
+                self.presenter.showMovieDetails(self.movie, response: response)
             case .failure(let error):
-                presenter.showMovieDetailsError(error)
+                self.presenter.showMovieDetailsError(error)
             }
         }
     }

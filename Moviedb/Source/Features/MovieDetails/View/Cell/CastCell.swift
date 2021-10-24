@@ -13,27 +13,27 @@ class CastCell: UICollectionViewCell {
     
     private lazy var contentCard: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .black
+        view.backgroundColor = .systemBackground
         return view
     }()
     
-    private lazy var contentImage: UIView = {
-        let view = UIView(frame: .zero)
-        view.layer.cornerRadius = 10
-        view.clipsToBounds = true
-        return view
+    private lazy var cardView: UICardView = {
+        let cardView = UICardView(frame: .zero)
+        cardView.cornerRadius = 10
+        cardView.clipsToBounds = true
+        return cardView
     }()
     
     private lazy var castImage: UIImageView = {
         let image = UIImageView(frame: .zero)
         image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
         return image
     }()
     
     private lazy var nameActor: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
-        label.textColor = .white
         label.lineBreakMode = .byWordWrapping
         label.font = .systemFont(ofSize: 16)
         return label
@@ -43,7 +43,6 @@ class CastCell: UICollectionViewCell {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.textColor = .white
         label.font = .systemFont(ofSize: 14)
         return label
     }()
@@ -71,7 +70,7 @@ class CastCell: UICollectionViewCell {
     }
     
     // MARK: - Public Functions
-
+    
     func setup(cast: Cast?) {
         guard let cast = cast else { return }
         
@@ -99,8 +98,8 @@ extension CastCell: ViewCodeProtocol {
     
     func setupSubviews() {
         addSubview(contentCard)
-        contentCard.addSubview(contentImage)
-        contentImage.addSubview(castImage)
+        contentCard.addSubview(cardView)
+        cardView.addSubview(castImage)
         contentCard.addSubview(nameActor)
         contentCard.addSubview(characterActor)
     }
@@ -111,7 +110,7 @@ extension CastCell: ViewCodeProtocol {
             make.right.bottom.equalToSuperview()
         }
         
-        contentImage.snp.makeConstraints { make in
+        cardView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
             make.left.right.equalToSuperview()
             make.height.equalTo(130)
@@ -123,7 +122,7 @@ extension CastCell: ViewCodeProtocol {
         }
         
         nameActor.snp.makeConstraints { make in
-            make.top.equalTo(contentImage.snp.bottom).offset(8)
+            make.top.equalTo(cardView.snp.bottom).offset(8)
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
         }

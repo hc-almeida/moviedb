@@ -53,23 +53,23 @@ class MovieListViewController: UIViewController {
     // MARK: - Private Functions
     
     private func fecthMovieList() {
-        showLoading()
+        startLoading()
         interactor.reset()
         interactor.fecthMovieList()
     }
     
     private func searchForMovie(_ movieName: String) {
-        showLoading()
+        startLoading()
         interactor.reset()
         interactor.searchMovieList(movieName)
-        hideLoading()
+        stopLoading()
     }
     
     private func setupSearchBar() {
         let searchController = UISearchController()
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
-        searchController.searchBar.searchTextField.textColor = .white
+        searchController.searchBar.searchTextField.textColor = .black
         searchController.obscuresBackgroundDuringPresentation = false
     }
     
@@ -84,14 +84,14 @@ class MovieListViewController: UIViewController {
 // MARK: - MovieListViewControllerProtocol Extension
 
 extension MovieListViewController: MovieListViewControllerProtocol {
-    
+   
     func reloadMovies(_ viewModel: MovieListViewModel, animated: Bool) {
         movieListView.reloadMovies(viewModel.movies, animated: animated)
     }
     
     func showMovieList(_ viewModel: MovieListViewModel) {
         movieListView.set(viewModel.movies)
-        hideLoading()
+        stopLoading()
     }
 
     func showMovieListError(_ errorMessage: String) {
@@ -104,7 +104,7 @@ extension MovieListViewController: MovieListViewControllerProtocol {
 extension MovieListViewController: MovieListViewDelegate {
 
     func fetchMovieListNextPage() {
-        showLoading()
+        startLoading()
         interactor.fetchNextPage()
     }
     
