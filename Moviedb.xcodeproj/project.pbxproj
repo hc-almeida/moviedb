@@ -12,6 +12,7 @@
 		2C0D70D1D7EB98B037A07A28 /* Pods_Moviedb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23EF58C37FCF37C06E97181 /* Pods_Moviedb.framework */; };
 		741F7EE026EF06DD00F35151 /* CastCustomCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741F7EDF26EF06DD00F35151 /* CastCustomCarousel.swift */; };
 		741F7EE226EF0E3B00F35151 /* CastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741F7EE126EF0E3B00F35151 /* CastCell.swift */; };
+		7428FBD72724DCFA00483421 /* UICircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7428FBD62724DCFA00483421 /* UICircularView.swift */; };
 		742F5DBD26DAAC1E00651B7C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F5DBC26DAAC1E00651B7C /* UIViewController+Extensions.swift */; };
 		7449DBA326D2AB04005B342F /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449DBA226D2AB04005B342F /* UIImageView+Extensions.swift */; };
 		744EB0E426F7EBE9002F25B9 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744EB0E326F7EBE9002F25B9 /* Credits.swift */; };
@@ -89,6 +90,7 @@
 		6D351324F295D9C72E0DADC7 /* Pods-Moviedb-MoviedbUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moviedb-MoviedbUITests.release.xcconfig"; path = "Target Support Files/Pods-Moviedb-MoviedbUITests/Pods-Moviedb-MoviedbUITests.release.xcconfig"; sourceTree = "<group>"; };
 		741F7EDF26EF06DD00F35151 /* CastCustomCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCustomCarousel.swift; sourceTree = "<group>"; };
 		741F7EE126EF0E3B00F35151 /* CastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCell.swift; sourceTree = "<group>"; };
+		7428FBD62724DCFA00483421 /* UICircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICircularView.swift; sourceTree = "<group>"; };
 		742F5DBC26DAAC1E00651B7C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7449DBA226D2AB04005B342F /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		744EB0E326F7EBE9002F25B9 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				74EAF51A270794EC00ECE944 /* UIBackButton.swift */,
+				7428FBD62724DCFA00483421 /* UICircularView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				74BD575C26F6AF8B005CE3C8 /* Int+Extension.swift in Sources */,
 				74BD576326F79802005CE3C8 /* MovieListViewModel.swift in Sources */,
 				D4ECB65D25C9C5700057C768 /* Movie.swift in Sources */,
+				7428FBD72724DCFA00483421 /* UICircularView.swift in Sources */,
 				74BD575026F6A477005CE3C8 /* RecommendedCustomCarousel.swift in Sources */,
 				74B8F60426E7F73300DA21A9 /* MovieDetailsPresenter.swift in Sources */,
 				74C17EEF26B80E17004461BB /* MovieCell.swift in Sources */,
