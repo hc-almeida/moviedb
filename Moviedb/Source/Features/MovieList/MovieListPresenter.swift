@@ -9,6 +9,10 @@ import Foundation
 
 protocol MovieListPresenterProtocol {
     
+    func showLoading()
+    
+    func dismissLoading()
+    
     func showMovieList(_ movieList: [Movie])
     
     func showMovieListError(_ error: MovieError)
@@ -21,6 +25,16 @@ class MovieListPresenter: MovieListPresenterProtocol  {
     // MARK: - VIP Properties
     
     weak var viewController: MovieListViewControllerProtocol!
+    
+    // MARK: - Public Functions
+    
+    func showLoading() {
+        
+    }
+    
+    func dismissLoading() {
+        
+    }
     
     func showMovieList(_ movieList: [Movie]) {
         let viewModel = buildViewModel(movieList)

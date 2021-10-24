@@ -11,12 +11,11 @@ class RecommendedCell: UICollectionViewCell {
     
     // MARK: - User Interface Components
     
-    private lazy var contentCard: UIView = {
-        let view = UIView(frame: .zero)
-        view.layer.shadowOpacity = 0.5
-        view.layer.cornerRadius = 16
-        view.clipsToBounds = true
-        return view
+    private lazy var contentCard: UICardView = {
+        let cardView = UICardView(frame: .zero)
+        cardView.cornerRadius = 16
+        cardView.clipsToBounds = true
+        return cardView
     }()
     
     private lazy var recommendedImage: UIImageView = {
@@ -49,10 +48,12 @@ class RecommendedCell: UICollectionViewCell {
     }
     
     // MARK: - Public Functions
-
+    
     func setup(movie: Movie) {
         if let poster = movie.posterPath {
             recommendedImage.load(url: MovieAPI.build(image: poster, size: .w780))
+        } else {
+            recommendedImage.image = UIImage(named: "imageNotFound")
         }
     }
     

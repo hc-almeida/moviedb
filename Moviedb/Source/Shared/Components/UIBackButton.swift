@@ -12,6 +12,12 @@ class UIBackButton: UIView {
     
     // MARK: - User Interface Components
     
+    private lazy var contentView: UICircularView = {
+        let view = UICircularView(frame: .zero)
+        view.backgroundColor = .night
+        return view
+    }()
+    
     private lazy var backButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.tintColor = .white
@@ -42,10 +48,16 @@ class UIBackButton: UIView {
 extension UIBackButton: ViewCodeProtocol {
     
     func setupSubviews() {
-        addSubview(backButton)
+        addSubview(contentView)
+        contentView.addSubview(backButton)
     }
     
     func setupConstraints() {
+        contentView.snp.makeConstraints { make in
+            make.top.left.equalToSuperview()
+            make.right.bottom.equalToSuperview()
+        }
+        
         backButton.snp.makeConstraints { make in
             make.top.left.equalToSuperview()
             make.right.bottom.equalToSuperview()
@@ -53,6 +65,9 @@ extension UIBackButton: ViewCodeProtocol {
     }
     
     func setupComponents() {
+        clipsToBounds = false
+        backgroundColor = .clear
+        
         backButton.accessibilityIdentifier = "backButtonId"
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
     }

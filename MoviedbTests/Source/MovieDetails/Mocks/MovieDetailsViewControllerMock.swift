@@ -8,33 +8,45 @@
 @testable import Moviedb
 
 class MovieDetailsViewControllerMock: MovieDetailsViewControllerProtocol {
-    
+
     // MARK: - VIP properties
     
     var interactor: MovieDetailsInteractorProtocol!
     
     // MARK: - Public properties
     
-    var details: Details?
+    private(set) var details: Details?
     
-    var movie: Movie?
+    private(set) var movie: Movie?
     
-    var errorMessage: String?
+    private(set) var errorMessage: String?
     
-    var showMovieDetailsCalled = false
+    private(set) var showMovieDetailsCalled = false
     
-    var showMovieDetailsErrorCalled = false
+    private(set) var showMovieDetailsErrorCalled = false
+    
+    private(set) var showLoadingCalled = false
+    
+    private(set) var dismissLoadingCalled = false
     
     //MARK: - Public functions
+    
+    func showLoading() {
+        self.showLoadingCalled = true
+    }
+    
+    func dismissLoading() {
+        self.dismissLoadingCalled = true
+    }
     
     func showMovieDetails(_ movie: Movie, detail: Details) {
         self.details = detail
         self.movie = movie
-        showMovieDetailsCalled = true
+        self.showMovieDetailsCalled = true
     }
     
     func showMovieListError(_ errorMessage: String) {
         self.errorMessage = errorMessage
-        showMovieDetailsErrorCalled = true
+        self.showMovieDetailsErrorCalled = true
     }
 }

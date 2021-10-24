@@ -16,7 +16,7 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
-    func showLoading() {
+    func startLoading() {
         let background = UIView()
         let container = UIView()
         let loading = UIActivityIndicatorView()
@@ -51,7 +51,7 @@ extension UIViewController {
         loading.startAnimating()
     }
     
-    func hideLoading() {
+    func stopLoading() {
         let seconds = 0.7
         let delay = seconds * Double(NSEC_PER_SEC)
         let dispatchTime = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)

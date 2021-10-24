@@ -41,6 +41,8 @@ class MovieDetailsTests: XCTestCase {
         viewController.interactor.fetchMovieDetails()
         
         XCTAssertTrue(viewController.showMovieDetailsCalled)
+        XCTAssertTrue(viewController.showLoadingCalled)
+        XCTAssertTrue(viewController.dismissLoadingCalled)
         XCTAssertNotNil(viewController.details)
         XCTAssertNotNil(viewController.movie)
     }
@@ -61,6 +63,8 @@ class MovieDetailsTests: XCTestCase {
         
         XCTAssertFalse(viewController.showMovieDetailsCalled)
         XCTAssertTrue(viewController.showMovieDetailsErrorCalled)
+        XCTAssertTrue(viewController.showLoadingCalled)
+        XCTAssertTrue(viewController.dismissLoadingCalled)
         XCTAssertNil(viewController.details)
         XCTAssertNil(viewController.movie)
     }

@@ -9,6 +9,10 @@ import UIKit
 
 protocol MovieDetailsViewControllerProtocol: AnyObject {
     
+    func showLoading()
+    
+    func dismissLoading()
+    
     func showMovieDetails(_ movie: Movie, detail: Details)
     
     func showMovieListError(_ errorMessage: String)
@@ -58,6 +62,14 @@ class MovieDetailsViewController: UIViewController {
 // MARK: - MovieDetailsViewControllerProtocol Extension
 
 extension MovieDetailsViewController: MovieDetailsViewControllerProtocol {
+    
+    func showLoading() {
+        startLoading()
+    }
+    
+    func dismissLoading() {
+        stopLoading()
+    }
     
     func showMovieDetails(_ movie: Movie, detail: Details) {
         movieDetailsView.setup(movie, details: detail)

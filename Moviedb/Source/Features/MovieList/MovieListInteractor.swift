@@ -58,7 +58,9 @@ class MovieListInteractor: MovieListInteractorProtocol {
     // MARK: - Public Functions
     
     func fecthMovieList() {
-        movieListWorker.fetchMovieList(section: .popular) { [unowned self] result in
+        movieListWorker.fetchMovieList(section: .popular) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let response):
                 self.didFetchMovieWithSuccess(response)
@@ -69,14 +71,17 @@ class MovieListInteractor: MovieListInteractorProtocol {
     }
     
     func searchMovieList(_ movieName: String) {
-        searchText = movieName.capitalized
+        let movieNameTrimmed = movieName.trimmingCharacters(in: .whitespacesAndNewlines)
+        searchText = movieNameTrimmed.capitalized
         
         movieListWorker.fetchMovieList(searchText: searchText) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let response):
-                self?.didFetchMovieWithSuccess(response)
+                self.didFetchMovieWithSuccess(response)
             case .failure(let error):
-                self?.didFetchFailure(error)
+                self.didFetchFailure(error)
             }
         }
     }
