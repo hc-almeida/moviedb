@@ -80,7 +80,7 @@ class MovieDetailsView: UIView {
     private lazy var tmdbLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "TMDB"
-        label.textColor = .systemGreen
+        label.textColor = .greenSwanp
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
@@ -147,14 +147,6 @@ class MovieDetailsView: UIView {
     // MARK: - Public Functions
     
     func setup(_ movie: Movie, details: Details) {
-        if let posterPath = movie.posterPath {
-            moviePoster.load(url: MovieAPI.build(image: posterPath, size: .w500))
-        }
-        
-        if let backdropPath = movie.backdropPath {
-            backdropImage.load(url: MovieAPI.build(image: backdropPath, size: .w780))
-        }
-        
         let note = String(movie.voteAverage)
         
         nameMovie.text = movie.title
@@ -164,6 +156,19 @@ class MovieDetailsView: UIView {
         descriptionMovie.text = movie.overview
         castCarousel.setup(details)
         recommendationsCarousel.setup(details)
+        
+        guard let poster = movie.posterPath,
+              let backdrop = movie.backdropPath
+        else {
+            moviePoster.image = UIImage(named: "imageNotFound")
+            backdropImage.image = UIImage(named: "imageNotFound")
+            return
+        }
+        
+        moviePoster.load(url: MovieAPI.build(image: poster, size: .w500))
+        backdropImage.load(url: MovieAPI.build(image: backdrop, size: .w780))
+        
+        validations(movie, details: details)
     }
     
     // MARK: - Private Properties
@@ -171,6 +176,23 @@ class MovieDetailsView: UIView {
     @objc
     private func close() {
         delegate.close()
+    }
+    
+    private func validations(_ movie: Movie, details: Details) {
+        
+        if movie.overview.isEmpty {
+            descriptionMovie.text = "Não foi encontrado sinopse para esse filme"
+        }
+        
+        if details.recommendations.count <= 0 {
+            recommendationsCarousel.isHidden = true
+            recommendationsTitle.isHidden = true
+        }
+        
+        if details.cast.count <= 0 {
+            castCarousel.isHidden = true
+            castTitle.isHidden = true
+        }
     }
 }
 

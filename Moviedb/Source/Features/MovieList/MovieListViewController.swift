@@ -69,7 +69,7 @@ class MovieListViewController: UIViewController {
         let searchController = UISearchController()
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
-        searchController.searchBar.searchTextField.textColor = .white
+        searchController.searchBar.searchTextField.textColor = .black
         searchController.obscuresBackgroundDuringPresentation = false
     }
     

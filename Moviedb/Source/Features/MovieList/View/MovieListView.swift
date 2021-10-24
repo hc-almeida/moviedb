@@ -14,7 +14,7 @@ class MovieListView: UIView {
     
     private lazy var emptyListView: EmptyMovieListView = {
         let view = EmptyMovieListView(frame: .zero)
-        view.backgroundColor = .black
+        view.backgroundColor = .systemBackground
         return view
     }()
     
@@ -27,7 +27,7 @@ class MovieListView: UIView {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .systemBackground
         return collectionView
     }()
     
@@ -196,7 +196,7 @@ extension MovieListView: ViewCodeProtocol {
     
     func setupComponents() {
         emptyListView.isHidden = true
-        backgroundColor = .black
+        backgroundColor = .systemBackground
         MovieCell.registerOn(collectionView)
         collectionView.accessibilityIdentifier = "movieCollection"
     }

@@ -21,16 +21,8 @@ extension UIColor {
     
     // MARK: - Public Properties
     
-    public class var gray: UIColor {
-        return UIColor(red: 33, green: 37, blue: 41)
-    }
-    
-    public class var gunmetal: UIColor {
-        return UIColor(red: 52, green: 58, blue: 54)
-    }
-    
-    public class var blackFogra: UIColor {
-        return UIColor(red: 22, green: 22, blue: 22)
+    public class var greenSwanp: UIColor {
+        return UIColor(red: 0, green: 100, blue: 0)
     }
     
     public class var darkness: UIColor {
@@ -40,7 +32,4 @@ extension UIColor {
     public class var night: UIColor {
         return UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 0.4)
     }
-    
-    
-    
 }
