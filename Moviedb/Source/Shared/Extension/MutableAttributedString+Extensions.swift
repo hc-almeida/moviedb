@@ -1,5 +1,5 @@
 //
-//  String+Extensions.swift
+//  MutableAttributedString+Extensions.swift
 //  Moviedb
 //
 //  Created by Hellen on 04/10/21.

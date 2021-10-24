@@ -34,17 +34,24 @@ class MovieDetailsView: UIView {
         return button
     }()
     
-    private lazy var detailsContent: UIView = {
-        let view = UIView(frame: .zero)
-        view.layer.cornerRadius = 20
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        return view
+    private lazy var detailsContent: UICardView = {
+        let cardView = UICardView(frame: .zero)
+        cardView.cornerRadius = 15
+        cardView.backgroundColor = .systemBackground
+        return cardView
+    }()
+    
+    private lazy var cardView: UICardView = {
+        let cardView = UICardView(frame: .zero)
+        cardView.cornerRadius = 8
+        cardView.clipsToBounds = true
+        cardView.backgroundColor = .darkness
+        return cardView
     }()
     
     private lazy var moviePoster: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -52,7 +59,6 @@ class MovieDetailsView: UIView {
     private lazy var nameMovie: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .white
         label.lineBreakMode = .byTruncatingTail
         label.font = .boldSystemFont(ofSize: 18)
         return label
@@ -61,14 +67,12 @@ class MovieDetailsView: UIView {
     private lazy var durantionMovie: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
-        label.textColor = .white
         label.font = .systemFont(ofSize: 16)
         return label
     }()
     
     private lazy var genreMovie: UILabel = {
         let label = UILabel(frame: .zero)
-        label.textColor = .white
         label.font = .systemFont(ofSize: 16)
         return label
     }()
@@ -83,7 +87,6 @@ class MovieDetailsView: UIView {
     
     private lazy var noteMovie: UILabel = {
         let label = UILabel(frame: .zero)
-        label.textColor = .white
         label.font = .systemFont(ofSize: 16)
         return label
     }()
@@ -91,7 +94,6 @@ class MovieDetailsView: UIView {
     private lazy var synopsisMovie: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Sinopse"
-        label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -99,15 +101,14 @@ class MovieDetailsView: UIView {
     private lazy var descriptionMovie: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 0
-        label.textColor = .white
         label.font = .systemFont(ofSize: 18)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     
     private lazy var castTitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Elenco"
-        label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -119,7 +120,6 @@ class MovieDetailsView: UIView {
     private lazy var recommendationsTitle: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Recomendações"
-        label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -184,7 +184,8 @@ extension MovieDetailsView: ViewCodeProtocol {
         scrollContent.addSubview(backdropImage)
         scrollContent.addSubview(backButton)
         scrollContent.addSubview(detailsContent)
-        detailsContent.addSubview(moviePoster)
+        detailsContent.addSubview(cardView)
+        cardView.addSubview(moviePoster)
         detailsContent.addSubview(nameMovie)
         detailsContent.addSubview(durantionMovie)
         detailsContent.addSubview(genreMovie)
@@ -220,16 +221,20 @@ extension MovieDetailsView: ViewCodeProtocol {
             make.left.right.bottom.equalToSuperview()
         }
         
-        moviePoster.snp.makeConstraints { make in
+        cardView.snp.makeConstraints { make in
             make.height.equalTo(230)
             make.width.equalTo(160)
             make.left.equalTo(detailsContent).offset(16)
             make.top.equalTo(detailsContent.snp.top).offset(-20)
         }
         
+        moviePoster.snp.makeConstraints { make in
+            make.left.top.right.bottom.equalToSuperview()
+        }
+        
         nameMovie.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(35)
-            make.left.equalTo(moviePoster.snp.right).offset(16)
+            make.left.equalTo(cardView.snp.right).offset(16)
             make.right.equalToSuperview().inset(16)
         }
         
@@ -296,7 +301,7 @@ extension MovieDetailsView: ViewCodeProtocol {
     }
     
     func setupComponents() {
-        backgroundColor = .black
+        backgroundColor = .systemBackground
         backButton.addTarget(self, action: #selector(close), for: .touchUpInside)
     }
 }

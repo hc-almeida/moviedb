@@ -13,6 +13,8 @@
 		741F7EE026EF06DD00F35151 /* CastCustomCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741F7EDF26EF06DD00F35151 /* CastCustomCarousel.swift */; };
 		741F7EE226EF0E3B00F35151 /* CastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741F7EE126EF0E3B00F35151 /* CastCell.swift */; };
 		7428FBD72724DCFA00483421 /* UICircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7428FBD62724DCFA00483421 /* UICircularView.swift */; };
+		7428FBDB2724F4D900483421 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7428FBDA2724F4D900483421 /* UIColor+Extensions.swift */; };
+		7428FBDD2724FCE800483421 /* UICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7428FBDC2724FCE800483421 /* UICardView.swift */; };
 		742F5DBD26DAAC1E00651B7C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742F5DBC26DAAC1E00651B7C /* UIViewController+Extensions.swift */; };
 		7449DBA326D2AB04005B342F /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7449DBA226D2AB04005B342F /* UIImageView+Extensions.swift */; };
 		744EB0E426F7EBE9002F25B9 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744EB0E326F7EBE9002F25B9 /* Credits.swift */; };
@@ -46,7 +48,7 @@
 		74EAF51D27079D3000ECE944 /* MovieDetailsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF51C27079D3000ECE944 /* MovieDetailsViewDelegate.swift */; };
 		74EAF51F270A411300ECE944 /* EmptyMovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF51E270A411300ECE944 /* EmptyMovieListView.swift */; };
 		74EAF524270ADCCC00ECE944 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF523270ADCCC00ECE944 /* UIView+Extension.swift */; };
-		74EAF526270B7B0C00ECE944 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF525270B7B0C00ECE944 /* String+Extensions.swift */; };
+		74EAF526270B7B0C00ECE944 /* MutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF525270B7B0C00ECE944 /* MutableAttributedString+Extensions.swift */; };
 		74EAF52C270BA26400ECE944 /* MovieListViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF52B270BA26400ECE944 /* MovieListViewControllerMock.swift */; };
 		74EAF531270BA8FC00ECE944 /* MovieListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF530270BA8FC00ECE944 /* MovieListTests.swift */; };
 		74EAF533270BFBAA00ECE944 /* MovieListWorkerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EAF532270BFBAA00ECE944 /* MovieListWorkerMock.swift */; };
@@ -91,6 +93,8 @@
 		741F7EDF26EF06DD00F35151 /* CastCustomCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCustomCarousel.swift; sourceTree = "<group>"; };
 		741F7EE126EF0E3B00F35151 /* CastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCell.swift; sourceTree = "<group>"; };
 		7428FBD62724DCFA00483421 /* UICircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICircularView.swift; sourceTree = "<group>"; };
+		7428FBDA2724F4D900483421 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		7428FBDC2724FCE800483421 /* UICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICardView.swift; sourceTree = "<group>"; };
 		742F5DBC26DAAC1E00651B7C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7449DBA226D2AB04005B342F /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		744EB0E326F7EBE9002F25B9 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
@@ -124,7 +128,7 @@
 		74EAF51C27079D3000ECE944 /* MovieDetailsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewDelegate.swift; sourceTree = "<group>"; };
 		74EAF51E270A411300ECE944 /* EmptyMovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMovieListView.swift; sourceTree = "<group>"; };
 		74EAF523270ADCCC00ECE944 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		74EAF525270B7B0C00ECE944 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		74EAF525270B7B0C00ECE944 /* MutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		74EAF52B270BA26400ECE944 /* MovieListViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerMock.swift; sourceTree = "<group>"; };
 		74EAF530270BA8FC00ECE944 /* MovieListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTests.swift; sourceTree = "<group>"; };
 		74EAF532270BFBAA00ECE944 /* MovieListWorkerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListWorkerMock.swift; sourceTree = "<group>"; };
@@ -294,7 +298,8 @@
 				742F5DBC26DAAC1E00651B7C /* UIViewController+Extensions.swift */,
 				74BD575B26F6AF8B005CE3C8 /* Int+Extension.swift */,
 				74EAF523270ADCCC00ECE944 /* UIView+Extension.swift */,
-				74EAF525270B7B0C00ECE944 /* String+Extensions.swift */,
+				74EAF525270B7B0C00ECE944 /* MutableAttributedString+Extensions.swift */,
+				7428FBDA2724F4D900483421 /* UIColor+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 			children = (
 				74EAF51A270794EC00ECE944 /* UIBackButton.swift */,
 				7428FBD62724DCFA00483421 /* UICircularView.swift */,
+				7428FBDC2724FCE800483421 /* UICardView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -759,6 +765,7 @@
 				74EAF524270ADCCC00ECE944 /* UIView+Extension.swift in Sources */,
 				744EB0E426F7EBE9002F25B9 /* Credits.swift in Sources */,
 				D4ECB67125C9CD220057C768 /* Cast.swift in Sources */,
+				7428FBDD2724FCE800483421 /* UICardView.swift in Sources */,
 				74B8F60226E7F6DF00DA21A9 /* MovieDetailsViewController.swift in Sources */,
 				D4D44E8925C0B197000F6268 /* AppDelegate.swift in Sources */,
 				74C17F0026B815B6004461BB /* MovieListBuilder.swift in Sources */,
@@ -772,6 +779,7 @@
 				741F7EE026EF06DD00F35151 /* CastCustomCarousel.swift in Sources */,
 				74BD575A26F6AEF8005CE3C8 /* RecommendationResponse.swift in Sources */,
 				7449DBA326D2AB04005B342F /* UIImageView+Extensions.swift in Sources */,
+				7428FBDB2724F4D900483421 /* UIColor+Extensions.swift in Sources */,
 				74C17EFA26B814EB004461BB /* MovieListPresenter.swift in Sources */,
 				74B8F60D26E7FAC800DA21A9 /* MovieDetailsView.swift in Sources */,
 				74C17EFC26B8153F004461BB /* MovieListInteractor.swift in Sources */,
@@ -792,7 +800,7 @@
 				74C17EED26B80D62004461BB /* ViewCodeProtocol.swift in Sources */,
 				74C17EF826B814C2004461BB /* MovieListViewController.swift in Sources */,
 				7455FD532675464500A32DE4 /* MovieListResponse.swift in Sources */,
-				74EAF526270B7B0C00ECE944 /* String+Extensions.swift in Sources */,
+				74EAF526270B7B0C00ECE944 /* MutableAttributedString+Extensions.swift in Sources */,
 				74BD575426F6AB3D005CE3C8 /* MovieDetailsResponse.swift in Sources */,
 				74EAF51D27079D3000ECE944 /* MovieDetailsViewDelegate.swift in Sources */,
 				D4ECB66725C9CAD40057C768 /* Details.swift in Sources */,

@@ -19,7 +19,7 @@ class RecommendedCustomCarousel: UIView {
         let collectionView = UICollectionView(
             frame: .zero, collectionViewLayout: layout)
 
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .systemBackground
         return collectionView
     }()
     
@@ -81,7 +81,7 @@ extension RecommendedCustomCarousel: ViewCodeProtocol {
     }
     
     func setupComponents() {
-        backgroundColor = .black
+        backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.dataSource = self
         RecommendedCell.registerOn(collectionView)
