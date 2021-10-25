@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MDCore
 
 class CastCell: UICollectionViewCell {
     

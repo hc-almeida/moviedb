@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MovieError: Error {
+public enum MovieError: Error {
     case networkError
     case decodeError
     case databaseError
@@ -15,7 +15,7 @@ enum MovieError: Error {
 
 extension MovieError: LocalizedError {
     
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .networkError:
             return "Desculpe, ocorreu um erro ao conectar aos servidores."
