@@ -7,7 +7,7 @@
 # Moviedb
 Projeto MovieDB em view Code.
 
-Projeto criado para praticar conhecimentos relacionados a linguagem swift. A ideia é consumir API The Movie Database, utilizando arquitetura VIP. 
+Projeto criado para praticar conhecimentos relacionados a linguagem swift. A ideia é consumir API The Movie Database e estruturar através da arquitetura VIP.
 
 # Padrão de Arquitetura
 - VIP - Clean Swift
