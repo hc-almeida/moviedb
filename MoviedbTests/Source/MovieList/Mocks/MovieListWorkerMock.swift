@@ -6,6 +6,7 @@
 //
 
 @testable import Moviedb
+import MDCore
 
 class MovieListWorkerSuccessMock: MovieListWorkerProtocol {
     

@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum Section: String {
+public enum Section: String {
     case popular
 }

@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct MovieAPI {
+public struct MovieAPI {
     
     // MARK: - Definitions
     
-    enum ImageSize: String {
+    public enum ImageSize: String {
         case original
         case w780
         case w500
@@ -21,31 +21,31 @@ struct MovieAPI {
     
     // MARK: - Internal Properties
     
-    static let key: String = "4a2227bffae9ea53eebcaa7d05098303"
-    static let version: Int = 3
-    static let baseURL: String = "https://api.themoviedb.org/\(MovieAPI.version)"
-    static let imageURL: String = "https://image.tmdb.org/t/p"
+    public static let key: String = "4a2227bffae9ea53eebcaa7d05098303"
+    public static let version: Int = 3
+    public static let baseURL: String = "https://api.themoviedb.org/\(MovieAPI.version)"
+    public static let imageURL: String = "https://image.tmdb.org/t/p"
     
-    static var language: String {
+    public static var language: String {
         return Locale.current.collatorIdentifier ?? "pt"
     }
     
-    static func build(image: String, size: ImageSize) -> String {
+    public static func build(image: String, size: ImageSize) -> String {
         return "\(MovieAPI.imageURL)/\(size.rawValue)/\(image)"
     }
     
-    static func build(section: Section, page: Int) -> String {
+    public static func build(section: Section, page: Int) -> String {
         return "\(MovieAPI.baseURL)/movie/\(section.rawValue)"
             + "?api_key=\(MovieAPI.key)&language=\(language)&page=\(page)"
     }
     
-    static func build(textSearch: String, page: Int) -> String {
+    public static func build(textSearch: String, page: Int) -> String {
         return "\(MovieAPI.baseURL)/search/movie"
         + "?api_key=\(MovieAPI.key)&language=\(language)&page=\(page)"
         + "&include_adult=false&query=\(textSearch)&watch_region=BR"
     }
     
-    static func build(detailsOf id: Int) -> String {
+    public static func build(detailsOf id: Int) -> String {
         return "\(MovieAPI.baseURL)/movie/\(id)?api_key=\(MovieAPI.key)"
             + "&language=\(language)&append_to_response=videos,credits,recommendations"
     }

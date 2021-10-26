@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MDCore
 
 typealias MovieDetailsResult = (Result<MovieDetailsResponse?, MovieError>) -> Void
 
