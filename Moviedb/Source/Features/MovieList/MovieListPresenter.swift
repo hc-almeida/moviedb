@@ -10,10 +10,6 @@ import MDCore
 
 protocol MovieListPresenterProtocol {
     
-    func showLoading()
-    
-    func dismissLoading()
-    
     func showMovieList(_ movieList: [Movie])
     
     func showMovieListError(_ error: MovieError)
@@ -25,31 +21,23 @@ class MovieListPresenter: MovieListPresenterProtocol  {
     
     // MARK: - VIP Properties
     
-    weak var viewController: MovieListViewControllerProtocol!
+    weak var viewController: MovieListViewControllerProtocol?
     
     // MARK: - Public Functions
     
-    func showLoading() {
-        
-    }
-    
-    func dismissLoading() {
-        
-    }
-    
     func showMovieList(_ movieList: [Movie]) {
         let viewModel = buildViewModel(movieList)
-        viewController.showMovieList(viewModel)
+        viewController?.showMovieList(viewModel)
     }
     
     func showMovieListError(_ error: MovieError) {
-        viewController.showMovieListError(
+        viewController?.showMovieListError(
             error.errorDescription ?? "Desculpe, algo deu errado. Tente mais tarde!")
     }
     
     func reloadMovies(_ movieList: [Movie], animated: Bool) {
         let viewModel = buildViewModel(movieList)
-        viewController.reloadMovies(viewModel, animated: animated)
+        viewController?.reloadMovies(viewModel, animated: animated)
     }
     
     // MARK: - Private Functions
